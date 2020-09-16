@@ -41,3 +41,29 @@
 
         u = (int("".join(res)))
         print(u, type(u))
+
+68. Даны коэффициенты a,b,c уравнения ax2+bx+c=0. Найти решение.
+        import math
+
+        a = int(input("Number 1: "))
+        b = int(input("Number 1: "))
+        c = int(input("Number 1: "))
+
+        D = (b**2 - 4*a*c)
+
+        if D < 0:
+            print("Корней нет.")
+        elif D == 0:
+            print("Только один корень", (-b)/2*a)
+        else:
+            x1 = ((-1*b)+math.sqrt(D))/2*a
+            x2 = ((-1*b)-math.sqrt(D))/2*a
+            
+            if x1 < 0 and x2 >= 0:
+                print("Только один корень", x2)
+            elif x2 < 0 and x1 >= 0:
+                print("Только один корень", x1)
+            elif x1 >= 0 and x2 >= 0:
+                print("Тут два корня", x1, x2)
+            else:
+                print("Корней нет")
