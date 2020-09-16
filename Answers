@@ -1,0 +1,13 @@
+65. Дано четырехзначное число. Переставьте местами цифры так, чтобы сначала оказались цифры, меньшие пяти.
+        a = int(input("Number 1: "))
+
+        res = list(map(int, str(a)))
+
+        g = []
+        for i in res:
+            if i < 5:
+                g.append(i)
+        for i in res:
+            if i >= 5:
+                g.append(i)
+        print("".join(str(x) for x in g))
