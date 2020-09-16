@@ -21,3 +21,22 @@
 
         print(c[:-1] + d[:-1])
 
+67. Дано четырехзначное число. Поменяйте местами наименьшую и наибольшую цифры.
+        a = int(input("Number 1: "))
+        c = str(a)
+
+        max_ = max(c)
+        min_ = min(c)
+
+        res = []
+
+        for i in c:
+           if i == min_:
+               res.append(max_)
+           elif i == max_:
+               res.append(min_)
+           else:
+               res.append(i)
+
+        u = (int("".join(res)))
+        print(u, type(u))
