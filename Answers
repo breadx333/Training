@@ -301,3 +301,147 @@
         b = int(input("Количество строк: "))
 
         ss(a, b)
+
+86. Для данного n найти сумму 1+2+3+...+n. Например, для n=10 ответ равен 55.
+        a = int(input("Number 1: "))
+
+        t = 0
+
+        for i in range(0, a):
+            i += 1
+            t += i
+
+        print(t)
+
+87. Найти сумму 10+11+12+13+...+88. Материал сайта www.itmathrepetitor.ru Ответ: 3871
+        a = int(input("Number 1: "))
+
+        t = 0
+        i = 10
+
+        while i<=a:
+            t += i
+            i += 1
+
+        print(t)
+88. Найти произведение 5⋅6⋅7⋅...⋅13.
+        a = int(input("Number 1: "))
+
+        t = 1
+        i = 5
+
+        while i<=a:
+            t *= i
+            i += 1
+
+        print(t)
+
+89. Найти сумму  1+4+7+11+...+112
+        a = int(input("Number 1: "))
+
+        t = 0
+
+        for i in range(1, a, 3):
+            t += i
+            i += 1
+
+        print(t)
+
+90. Найти сумму cos(3/5)+cos(5/7)+cos(7/9)+...+cos(111/113).
+        import math
+
+        a = int(input("Number: "))+1
+
+        q = []
+
+        for i in range(3, a, 2):
+            e = i/(i+2)
+            q.append(math.cos(e))
+            i += 1
+
+        print(sum(q))
+
+91. Найти сумму 2/3+3/4+4/5+...+9/10.
+        import math
+
+        a = int(input("Number: "))+1
+
+        q = []
+
+        for i in range(2, a):
+            e = i/(i+1)
+            q.append(e)
+            i += 1
+
+        print(sum(q))
+
+92. Вывести на экран сто первых сумм вида 1+2+3+...+n.
+        import math ##Вопроса нихерашечки не понял, поэтому как понял так и написал
+
+        a = int(input("Number: "))+1
+
+        q = []
+
+        for i in range(1, a):
+            q.append(str(i))
+            i += 1
+
+        print('+'.join(q), '=', sum(list(map(int, q))), sep='')
+
+93. Найдите сумму квадратов первых n натуральных чисел
+        import math
+
+        a = int(input("Number: "))+1
+
+        q = []
+
+        for i in range(1, a):
+            q.append(str(i**2))
+            i += 1
+
+        print('+'.join(q), '=', sum(list(map(int, q))), sep='')
+
+94. Найдите сумму 1+1/2+1/3+…+1/n.
+        import math
+
+        a = int(input("Number: "))+1
+
+        q = []
+
+        for i in range(1, a):
+            q.append(1/i)
+            i += 1
+
+        print(q, sum(q))
+
+95. Даны a и n. Вычислите p=(a+1)^2 *(a+2)^2⋅…⋅(a+n)*2
+        from functools import reduce
+
+        a = int(input("Number: "))
+        n = int(input("Number: "))+1
+
+        p = []
+
+        for i in range(1, n):
+            e = (a+i)**2
+            p.append(e)
+            i += 1
+
+        print(reduce(lambda x, y: x*y, p))
+
+96. Дано натуральное число n. Вычислите 1/cosx+1/cosx^2+…+1/cosx^n
+        import math ## Правильно, нет?
+
+        x = int(input("Number x: "))
+        n = int(input("Number n: "))+1
+
+        q = []
+
+        for i in range(1, n):
+            e = 1/(math.cos(x**i))
+            q.append(e)
+            i += 1
+
+        print(sum(q))
+
+97. Вычислите 1⋅2+2⋅3⋅4+...+n⋅(n+1)⋅…⋅2n.
