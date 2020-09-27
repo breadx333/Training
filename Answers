@@ -445,3 +445,18 @@
         print(sum(q))
 
 97. Вычислите 1⋅2+2⋅3⋅4+...+n⋅(n+1)⋅…⋅2n.
+        from functools import reduce
+
+        n = int(input("Number: "))
+
+        q = list(range(1, n+1))
+        x = []
+        z = []
+
+        for i in q:
+            e = list(range(i, i*2+1))
+            w = reduce((lambda x, y: x*y), e)
+            x.append(e)
+            z.append(w)
+
+        print("+".join(list("*".join(list(map(str, x[i]))) for i in range(len(x)))), '=', "+".join(list(map(str, z))), '=', sum(z))
