@@ -626,3 +626,109 @@
             for j in range(1,10):
                 print("%4d" % (i*j), end='')
             print()
+или
+        for i in range(1,10):
+            for j in range(1, 10):
+                print(j, "x", i, "=", i*j, sep='', end=' ')
+            print()
+
+116. Найдите количество целых чисел от a до b включительно, которые делятся на 12.
+        a = int(input("Number 1: "))
+        b = int(input("Number 2: "))
+
+        q = []
+
+        for i in range(a, b+1):
+            if i%12 == 0:
+                q.append(i)
+
+        print("Количество чисел, которые четные и делятся на 12 -", len(q))
+        
+117. Пользователь вводит ненулевые числа до тех пор пока не введет ноль. Найдите сумму этих чисел.
+        q = []
+
+        while True:
+            a = int(input("Number {num}: ".format(num = len(q)+1)))
+            if a != 0:
+                q.append(a)
+            else:
+                print(sum(q))
+                break
+
+118. Пользователь вводит ненулевые целые числа до тех пор, пока не введет ноль. Найдите количество четных чисел, которые он ввел.
+        q = []
+
+        while True:
+            a = int(input("Number {num}: ".format(num = len(q)+1)))
+            if a != 0:
+                q.append(a)
+            else:
+                print("Количество четных чисел: ", len(list(filter(lambda x: x%2==0, q))))
+                break
+
+119. Найдите четырехзначные числа, сумма цифр которых равна 15.
+        for i in range(1000, 10000):
+            if sum(list(map(int, list(str(i))))) == 15:
+                print(i)
+
+120. Найдите наибольшую цифру в данном натуральном числе.
+        a = float(input("Number 1: ")) #Математически все вроде правильно
+        if a>0:
+            print(int(a))
+        else:
+            print("Niyetu")
+            
+121. Дано натуральное число. Найдите количество четных цифр.
+        a = float(input("Number 1: "))
+
+        q = []
+
+        if a>0:
+            for i in range(1, int(a)+1):
+                if i%2 == 0:
+                    q.append(i)
+            print("Количество четных чисел в данном натуральном числе:", len(q))
+        else:
+            print("Niyetu")
+
+122. В данном натуральном числе найдите количество цифр, которые больше 3, но меньше 8.
+        a = float(input("Number 1: "))
+
+        q = []
+
+        if a>0:
+            for i in range(1, int(a)+1):
+                if i>3 and i<8:
+                    q.append(i)
+            print("Количество чисел, которые меньше 8 и больше 3:", len(q))
+        else:
+            print("Niyetu")
+
+123. Для данного натурального числа найдите число, цифры которого записаны в обратном порядке.
+        a = float(input("Number 1: "))
+
+        q = []
+
+        if a>0:
+            for i in reversed(range(1, int(a)+1)):
+                    q.append(i)
+            print(", ".join(list(map(str, q))))
+        else:
+            print("Niyetu")
+
+124. Найдите n-ое число Фибоначчи.
+        a = 0
+        b = 1
+
+        t = int(input("Number 1: "))
+
+        if t<2:
+            quit()
+
+        print(a, b, end=' ')
+
+        for i in range(2, t):
+            a, b = b, a+b
+            print(b, end=' ')
+            
+125. Вычислите значения функции f(x)=x2−sinx на отрезке [a;b] с шагом h. Результат представить в виде таблицы.
