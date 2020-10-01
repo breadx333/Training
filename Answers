@@ -774,3 +774,43 @@
             print("Число не является простым")
 
 128. Два числа называются дружественными, если каждое из них равно сумме всех делителей второго не считая самого этого числа. Найдите все пары дружественных чисел на отрезке [a;b].
+        a = int(input("Number 1: ")) #пытался что то делать, но запутался, есть решение из интернета
+        b = int(input("Number 2: "))
+
+        e = []
+        q = []
+        t = 0
+
+        for i in range(a, b+1):
+           e.append(sum(q[:-1]))
+           q.clear()
+           for j in range(1, i+1):
+              if i%j==0:
+                 q.append(j)
+
+        e.remove(0)
+        for t in e:
+           for l in range(a, b+1):
+              if t==sum(l%)
+              
+#Интернет
+
+        def divisors(number):
+            return sum(x for x in range(1, number // 2 + 1) if number % x == 0)
+
+        pairs = {}
+
+        a = int(input("Number 1: "))
+        b = int(input("Number 2: "))
+
+        for i in range(a, b):
+            sum_div = divisors(i)
+            if sum_div != 1:
+                if i in pairs:
+                    num1, num2 = i, pairs[i]
+                    if (num1 // num2) and (divisors(num1) == num2):
+                        print(*sorted([num2, num1]))
+                else:
+                    pairs[sum_div] = i
+
+129. Натуральное число называется совершенным, если оно равно сумме всех своих делителей, не равных самому числу. Найдите все совершенные числа, меньшие данного натурального числа n.
