@@ -1191,3 +1191,78 @@
                 continue
 
 146. Вывести англ. алфавит по 5 букв в строке.
+        import random
+
+        q = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        i = 0
+        x = 0
+        y = 5
+
+        while True:
+            try:
+                while x<=i<y:
+                    print(q[i], end=" ")
+                    i+=1
+                x+=5
+                y+=5
+                print("\n")
+
+            except IndexError:
+                break
+
+147. Вывести квадрат 7 на 7 из случайных букв. Материал сайта www.itmathrepetitor.ru
+        import random
+
+        cc
+
+        for i in range(0, 7):
+            for i in range(0, 7):
+                print(random.choice(q), end=' ')
+            print('\n')
+
+148. Пользователь вводит положительное целое число. Зашифровать каждую цифру серией из букв (конкретный принцип составления серии букв разработать самостоятельно).
+        import random
+
+        q = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        w = []
+        a = (input("Number 1: "))
+        try:
+            int(a)
+            a = list(a)
+            for i in a:
+                if i == '1':
+                    print("qw", end='')
+                elif i == '2':
+                    print("we", end='')
+                elif i == '3':
+                    print("hgn", end='')
+                elif i == '4':
+                    print("ftghf", end='')
+                elif i == '5':
+                    print("gt", end='')
+                elif i == '6':
+                    print("sae", end='')
+                elif i == '7':
+                    print("dfg", end='')
+                elif i == '8':
+                    print("dfg", end='')
+                elif i == '9':
+                    print("gh", end='')
+                elif i == '0':
+                    print("rt", end='')
+        except ValueError:
+            quit()
+
+149. Сгенерируйте строку символов длины от 3 до 10, в которой ровно 2 символа "!".
+        import random
+
+        e = ["*" for i in range(0, random.randint(3, 10))]
+
+        while e.count("!")!=2:
+            e[random.randint(0, len(e)-1)]='!'
+
+        print("".join(e))
+
+150. Сгенерировать пароль для пользователя. Требования: длина от 6 до 20 символов, должен быть ровно один символ подчеркивания, хотя бы две заглавных буквы, не более 5 цифр, любые две цифры подряд недопустимы.
