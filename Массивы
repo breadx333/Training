@@ -11,7 +11,7 @@
             else:
                 q.append(0)
 
-        print(q)
+        print(numpy.array(q))
 
 2. Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.
         a = int(input(""))
@@ -23,4 +23,81 @@
                     q.append(0)
                 else:
                     q.append(1)
-        print(q)
+        
+        print(numpy.array(q))
+
+3. Заполнить массив последовательными нечетными числами, начиная с единицы.
+        a = int(input(""))
+
+        q = []
+
+        for i in range(0, a):
+                if i%2==0:
+                    pass
+                else:
+                    q.append(i)
+
+        print(numpy.array(q))
+
+4. Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d.
+        import numpy
+
+        a = int(input("Начиная от: "))
+        b = int(input("До: "))
+        d = int(input("Разность числел: "))
+
+        q = []
+
+        if a>b:
+            b = b-2
+            d = -d
+        for i in range(a, b+1, d):
+            q.append(i)
+
+        print(numpy.array(q))
+        
+5. Сформировать возрастающий массив из четных чисел.
+        import numpy
+
+        a = int(input("Начиная от: "))
+        b = int(input("До: "))
+
+        q = []
+
+        for i in range(a, b+1):
+            if i%2==0:
+                q.append(i)
+
+        print(numpy.array(q))
+        
+6. Сформировать убывающий массив из чисел, которые делятся на 3.
+        import numpy
+
+        a = int(input("Начиная от: "))
+        b = int(input("До: "))
+
+        q = []
+
+        for i in reversed(range(a, b+1)):
+            if i%3==0:
+                q.append(i)
+
+        print("Данные идут по убыванию", numpy.array(q))
+        
+7. Создать массив из n первых чисел Фибоначчи.
+        import numpy
+
+        a = int(input("Длина Фибоначчи: "))
+
+        q = [0, 1]
+
+        fib1 = q[-2]
+        fib2 = q[-1]
+
+        for i in range(a-2):
+            summa = fib1 + fib2
+            fib1 = fib2
+            fib2 = summa
+            q.append(summa)
+
+        print(numpy.array(q))
