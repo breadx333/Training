@@ -155,3 +155,122 @@
         print(q)
         
 11. Создать массив, состоящий из троек подряд идущих одинаковых элементов.
+        import numpy
+        import random
+
+        a = int(input("Длина Фибоначчи: "))
+
+        q = []
+
+        for i in range(0, a):
+            l = random.randint(1, 999)
+            for j in range(0, 3):
+                q.append(l)
+
+        print(numpy.array(q))
+
+12. Создать массив, который одинаково читается как слева направо, так и справа налево.
+        import numpy
+        import random
+
+        a = int(input("Длина Фибоначчи: "))
+
+        q = []
+
+        for i in range(0, a):
+            l = random.randint(1, 999)
+            q.append(l)
+
+        w = q + q[::-1]
+
+        print(numpy.array(w))
+        
+13. Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях.
+        import numpy
+        import random
+
+        a = int(input("Длина Фибоначчи: "))
+
+        q = []
+
+        for i in range(0, a):
+            l = random.randint(1, 999)
+            q.append(l)
+
+        if len(q)==1:
+            q = [1]
+        else:
+            while q.count(1)<2:
+                q[random.randint(0, len(q)-1)] = 1
+
+        print(numpy.array(q))
+        
+14. Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей.
+        import numpy
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(1, 100)):
+            l = 0
+            q.append(l)
+
+        while q.count(1)<=q.count(0):
+            q[random.randint(0, len(q)-1)] = 1
+
+        print(numpy.array(q), q.count(1), q.count(0))
+
+15. Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек.
+        import numpy ##Я знаю что этот код можно написать более оптимизировано, но пока так, еще у меня как всегда сезонно начал забиватся нос
+        import random
+
+        q = []
+        d = random.randint(3, 5)
+
+        for i in range(0, random.randint(1, 100)):
+            l = random.randint(0, 9)
+            q.append(l)
+
+        while 3>q.count(1):
+            q[random.randint(0, len(q)-1)] = 1
+
+        while 5<q.count(1):
+            if q[random.randint(0, len(q)-1)] == 1:
+                q[random.randint(0, len(q)-1)] = random.randint(0, 9)
+            else:
+                pass
+
+        while q.count(2)<=q.count(3):
+            l = random.randint(0, len(q)-1)
+            if q[l]!=1:
+                q[l] = 2
+            else:
+                pass
+
+        print(numpy.array(q), q.count(1), q.count(2), q.count(3))
+        
+16. Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве.
+        import numpy ##Код рабочий, но с каким то багом, он иногда не работает, не разобрался почему
+        import random
+
+        q = []
+        pol = 0
+        otr = 0
+
+        for i in range(0, random.randint(2, 100)):
+            l = random.randint(0, 9)
+            q.append(l)
+            pol+=1
+
+        while otr!=pol:
+            d = random.randint(0, len(q)-1)
+            if q[d] > 0:
+                q[d] = -(random.randint(0, 9))
+                otr+=1
+                pol-=1
+            else:
+                pass
+
+        print(numpy.array(q), pol, otr)
+        
+17. Заполните массив случайным образом нулями, единицами и двойками так, чтобы первая двойка в массиве встречалась раньше первой единицы, количество единиц было в точности равно суммарному количеству нулей и двоек.
