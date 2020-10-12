@@ -274,3 +274,34 @@
         print(numpy.array(q), pol, otr)
         
 17. Заполните массив случайным образом нулями, единицами и двойками так, чтобы первая двойка в массиве встречалась раньше первой единицы, количество единиц было в точности равно суммарному количеству нулей и двоек.
+        import numpy ## Ебанный рот этого казино, я создал код нагружающий комп до упора, из за этого решение этой задачки не сохранилось, будьте осторожны и сто раз подумайте перед запуском этого кода
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+            if i==0:
+                q.append(5)
+            else:
+                q.append(random.randint(0, 9))
+
+        for j in q:
+            if j*3>9:
+                q.append(j*3)
+            else:
+                pass
+
+        print(numpy.array(q), len(q), q.count(1), q.count(0), q.count(2))
+        ######
+        import numpy ##решение этой задачки
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.choice([0, 2]))
+
+        while q.count(1)!=q.count(0)+q.count(2):
+            q[random.randint(q.index(2)+1, len(q)-1)] = 1
+
+        print(numpy.array(q), len(q), q.count(1), q.count(0), q.count(2))
