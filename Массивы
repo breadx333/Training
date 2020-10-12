@@ -305,3 +305,23 @@
             q[random.randint(q.index(2)+1, len(q)-1)] = 1
 
         print(numpy.array(q), len(q), q.count(1), q.count(0), q.count(2))
+
+18. Придумайте правило генерации массива заданной длины. Определите, сгенерирован ли данный массив вашим правилом или нет.
+        import numpy ##К черту это придумывание, все что я створю превращается в оружие, rofl))
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+            if i==0:
+                q.append(5)
+            else:
+                q.append(random.randint(0, 9))
+
+        for j in q:
+            if j*3>9:
+                q.append(j*3)
+            else:
+                pass
+
+        print(numpy.array(q), len(q), q.count(1), q.count(0), q.count(2))
