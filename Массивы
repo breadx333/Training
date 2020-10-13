@@ -325,3 +325,77 @@
                 pass
 
         print(numpy.array(q), len(q), q.count(1), q.count(0), q.count(2))
+
+Анализ элементов массива
+19. Определить, содержит ли массив данное число x
+        import numpy
+        import random
+
+        a = int(input("Number 1: "))
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        if a in q:
+                print("Это число содердится в массиве", numpy.array(q))
+        else:
+                print("Это число Не содежится в массиве", numpy.array(q))
+
+20. Найти количество четных чисел в массиве.
+        import numpy
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        print(numpy.array(q))
+        print("Четные числа массива: ")
+
+        for i in q:
+                if i%2==0:
+                        print(i)
+                else:
+                        pass
+                        
+21. Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7.
+        import numpy
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        print(numpy.array(q))
+        print("Числа массива, которые делятся на 3, но не делятся на 7: ")
+
+        for i in q:
+                if i%3==0 and i%7!=0:
+                        print(i)
+                else:
+                        pass
+
+22. Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива.
+        import numpy
+        import random
+
+        q = []
+
+        def ss(x):
+                q0 = []
+                for i in q:
+                        if i%q[x]==0:
+                                q0.append(i)
+                return q0
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 999))
+
+        print(q)
+        print("Числа массива которые делятся на первое число массива:", len(ss(0)))
+        print("Числа массива которые делятся на последнее число массива:", len(ss(-1)))
+
+23. Найдите сумму и произведение элементов массива.
