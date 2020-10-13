@@ -399,3 +399,54 @@
         print("Числа массива которые делятся на последнее число массива:", len(ss(-1)))
 
 23. Найдите сумму и произведение элементов массива.
+        import numpy
+        import random
+
+        q = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 999))
+
+        print(numpy.array(q))
+        print("Сумма всех чисел массива:", sum(q))
+        print("Произведение всех числе массива:", numpy.prod(numpy.array(q)))
+
+24. Найдите сумму четных чисел массива.
+        import numpy
+        import random
+
+        q = []
+
+        def ss():
+                q0 = []
+                for i in q:
+                        if i%2==0:
+                                q0.append(i)
+                return sum(q0)
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 999))
+
+        print(numpy.array(q))
+        print("Сумма четных чисел массива:", ss())
+        
+25. Найдите сумму нечетных чисел массива, которые не превосходят 11.
+        import numpy
+        import random
+
+        q = []
+
+        def ss():
+                q0 = []
+                for i in q:
+                        if i%3==0 and i<11:
+                                q0.append(i)
+                return sum(q0)
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        print(numpy.array(q))
+        print("Сумма нечетных чисел массива, которые не превосходят 11:", ss())
+        
+26. Найдите сумму чисел массива, которые расположены до первого четного числа массива. Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних.
