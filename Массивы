@@ -450,3 +450,154 @@
         print("Сумма нечетных чисел массива, которые не превосходят 11:", ss())
         
 26. Найдите сумму чисел массива, которые расположены до первого четного числа массива. Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних.
+        import numpy as np
+        import random
+
+        q = []
+        e = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        for j in q:
+                if j%2==0:
+                        e.append(j)
+                        break
+                else:
+                        pass
+
+        if len(e)==0:
+                print(q)
+                print(e)
+                print(np.array(q[0:-1]))
+        else:
+                print(q)
+                print(e)
+                print(np.array(q[:(q.index(e[0]))]))
+                print(sum(q[:(q.index(e[0]))]))
+
+27. Найдите сумму чисел массива, которые стоят на четных местах.
+        import numpy as np
+        import random
+
+        q = []
+        e = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        for j in q:
+                if j%2==0:
+                        e.append(j)
+                else:
+                        pass
+
+        print(sum(e))
+        
+28. Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива.
+        import numpy as np
+        import random
+
+        q = []
+        e = []
+
+        for i in range(0, random.randint(10, 20)):
+                q.append(random.randint(0, 99))
+
+        for j in q:
+                if j%2==0 and j>q[0] and j>q[-1]:
+                        e.append(j)
+                else:
+                        pass
+
+        print(q, e, sum(e))
+        
+29. Дан массив x из n элементов. Найдите x1−x2+x3−…−xn−1+xn.
+        import numpy as np ##Чо бля? вроде так
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = q[0]
+        i = 1
+
+        while i<(n-1)/2:
+                e -= q[i] + q[i+1]
+                i += 1
+
+        print(e)
+
+30. Дан массив x из n элементов. Найдите x1xn+x2xn−1+…+xnx1.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = 0
+
+        for i in range(1, len(q)):
+                e += q[i-1]*q[-1*i]
+
+        print(e)
+        
+31. Дан массив x из n элементов. Найдите xn(xn+xn−1)(xn+xn−1+xn−2)…(xn+…+x1).
+        ## Я так заебанный, оставлю на потом
+
+32. Найти наибольший элемент массива.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+
+        print(q, max(q))
+
+33. Найдите сумму наибольшего и наименьшего элементов массива.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+
+        print(q, max(q)+min(q))
+        
+34. Найдите количество элементов массива, которые отличны от наибольшего элемента не более чем на 10%.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = []
+
+        for j in q:
+                if ((max(q)-j)*100)/max(q)<10:
+                        e.append(j)
+                else:
+                        pass
+
+        print(q, max(q))
+        print(e)
+        
+35. Найдите наименьший четный элемент массива.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = []
+
+        for j in q:
+                if j%2 == 0:
+                        e.append(j)
+                else:
+                        pass
+
+        print(min(e))
+        
+36. Среди элементов с нечетными номерами найдите наибольший элемент массива, который делится на 3.
