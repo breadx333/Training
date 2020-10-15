@@ -601,3 +601,64 @@
         print(min(e))
         
 36. Среди элементов с нечетными номерами найдите наибольший элемент массива, который делится на 3.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = []
+
+        for j in range(1, len(q)+1):
+                if j%2 == 0:
+                        pass
+                else:
+                        if q[j-1]%3==0:
+                                e.append(q[j-1])
+                        else:
+                                pass
+
+        print(q, (e), max(e))
+        
+37. Дан массив и число p. Найдите два различных числа в массиве, сумма которых наиболее близка к p.
+        import numpy as np
+        import random
+
+        p = int(input("Number p: "))
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = []
+
+
+        for i in q:
+                for j in q:
+                        if abs(p-(i+j))<5:
+                                print(i, j)
+                        else:
+                                pass
+                                
+38. Дан массив. Найдите два соседних элемента, сумма которых минимальна.
+        ##Не могу понять дано
+        
+39. Дан массив. Найдите три последовательных элемента в массиве, сумма которых максимальна.
+        import numpy as np ##Коды все грязнее и грязнее
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, 99) for i in range(0, n)]
+        e = []
+
+
+        for i in range(2, len(q)):
+                w = q[i-2]+q[i-1]+q[i]
+                e.append(w)
+
+        m = e.index(max(e))
+
+        print(q)
+        print(e, max(e), m)
+        print(q[m], q[m+1], q[m+2])
+        
+40. В данном массиве найдите количество чисел, соседи у которых отличаются более чем в 2 раза.
