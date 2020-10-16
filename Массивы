@@ -701,3 +701,25 @@
                 print(e)
                 
 42. Проверьте, содержит ли данный массив из n чисел, все числа от 1 до n.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+
+        q = [random.randint(0, n) for i in range(0, n)]
+        numbers = [j for j in range(0, n)]
+
+        for i in set(q):
+            if i in numbers:
+                numbers.remove(i)
+
+        if len(numbers)!=0:
+            print("Массив не содержит все числа от 0 до %d"%n)
+            print(q, len(q))
+            print("Числа которые не содержится в массиве:", numbers)
+        elif len(numbers)==0:
+            print(q)
+            print(numbers)
+            print("Массив имеет все числа от 0 до %d"%n)
+            
+43. Проверьте, образует ли элементы массива в данном порядке арифметическую или геометрическую прогрессии.
