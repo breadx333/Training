@@ -723,3 +723,56 @@
             print("Массив имеет все числа от 0 до %d"%n)
             
 43. Проверьте, образует ли элементы массива в данном порядке арифметическую или геометрическую прогрессии.
+        import numpy as np ##Нах я не использовал нумпи?
+        import random
+
+        f  = []
+
+        for i in range(1, 20):
+            if i == 1:
+                f.append(2)
+            else:
+                f.append(f[-1]*1/2)
+
+        i = 0
+
+        def ar():
+            d = f[1] - f[0]
+
+            check = []
+
+            for i in range(0, 20-1):
+                if i == 0:
+                    check.append(f[0])
+                else:
+                    check.append(check[-1]+d)
+
+            if f == check:
+                if d>0:
+                    print("+")
+                else:
+                    print("-")
+            else:
+                geom()
+
+        def geom():
+            q = f[1] / f[0]
+
+            check = []
+
+            for i in range(0, 20-1):
+                if i == 0:
+                    check.append(f[0])
+                else:
+                    check.append(check[-1]*q)
+
+            if f == check:
+                if abs(q)>1:
+                    print("Возрастающая геом прог")
+                elif abs(q)<1:
+                    print("Убывающая геом прог")
+            else:
+                print("Массив не является ни арифметической ни геометрической прогрессией")
+
+        ar()
+        print(f)
