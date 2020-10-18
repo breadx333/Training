@@ -848,3 +848,27 @@
         print(set(f))
 
 46. Определите количество перемен знаков элементов массива.
+        import numpy as np
+        import random
+
+        f  = []
+
+        otr = []
+        pol = []
+        j = 0
+
+        while j<10:
+            a = int(input("GET: "))
+            f.append(a)
+            j+=1
+
+        for i in f:
+            if i<0:
+                otr.append(i)
+            else:
+                pol.append(i)
+
+        print("Количество отрицательных чисел в массиве:", len(otr), otr)
+        print("Количество положительных чисел в массиве:", len(pol), pol)
+        
+47. В данном массиве найти максимальное количество одинаковых элементов.
