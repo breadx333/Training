@@ -776,3 +776,61 @@
 
         ar()
         print(f)
+
+44. Проверьте, является ли данный массив возрастающим или убывающим.
+        import numpy as np
+        import random
+
+        f  = []
+        j = 0
+
+        while j<10:
+            a = int(input("GET: "))
+            f.append(a)
+            j+=1
+
+        def pol():
+            i = 1
+
+            check = True
+
+            while i<len(f):
+                if i == 0:
+                    check = True
+                    i+=1
+                elif f[i]>=f[i-1]:
+                    check = True
+                    i+=1
+                else:
+                    check = False
+                    break
+
+            if check:
+                print("Массив является положительным")
+            else:
+                otr()
+
+        def otr():
+            i = 1
+
+            check = True
+
+            while i<len(f):
+                if i == 0:
+                    check = True
+                    i+=1
+                elif f[i]<=f[i-1]:
+                    check = True
+                    i+=1
+                else:
+                    check = False
+                    break
+
+            if check:
+                print("Массив является отрицательным")
+            else:
+                print("Массив является смешанным")
+
+        pol()
+        
+45. Найдите количество различных элементов данного массива.
