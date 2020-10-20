@@ -1120,3 +1120,36 @@
         print(f)
         
 59. Найти наибольший четный элемент массива и поменять его местами с наименьшим нечетным элементом. Если одного из таких элементов нет, то всем элементам массива присвоить значение, равное нулю.
+        import numpy as np
+        import random
+
+        f  = [12, 5, 7, 8, 9, 3, 0, 4, 6, 8, 9, 3, 4, 3, 4, 5, 6, 7, 8, 9, 10, 8]
+        print(f)
+
+        l = sorted(f)
+        max_l = []
+        min_r = []
+
+        for i in reversed(l):
+            if i%2 == 0:
+                max_l.append(i)
+                break
+            else:
+                pass
+
+        for j in l:
+            if j%2 == 0:
+                min_r.append(j)
+                break
+            else:
+                pass
+
+        if len(max_l)!=0 and len(min_r)!=0:
+            f[f.index(max_l[0])] = min_r
+            f[f.index(min_r[0])] = max_l
+            print(f)
+        else:
+            f = [0 for i in range(len(f))]
+            print(f)
+            
+60. Заменить каждый элемент массива с четным номером на соседний слева элемент.
