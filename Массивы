@@ -1250,3 +1250,57 @@
         print(list(reversed(f)))
         
 66. Дан массив a из n элементов. Сформировать новый массив b такого же размера так, что элемент bk равен сумме элементов первых элементов массиваa до номера k включительно.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+        a = [random.randint(0, 9) for i in range(0, n)]
+
+        b = []
+
+        for i in range(0, len(a)):
+            b.append(sum(a[:i+1]))
+
+        print(a)
+        print(b)
+        
+67. В данном массиве найти все нулевые элементы и заменить их вместе с соседними элементами на 3.
+        import numpy as np
+        import random
+
+        n = int(input("Number n: "))
+        f = [random.randint(0, 9) for i in range(0, n)]
+
+        b = []
+
+        print(f)
+
+        i = 0
+
+        while i<len(f):
+            if i == 0:
+                if f[i] == 0:
+                    f[i] = 0
+                    f[i+1] = 0
+                    i+=2
+                else:
+                    i+=1
+            elif i == len(f)-1:
+                if f[i] == 0:
+                    f[i-1] = 0
+                    f[i] = 0
+                    i+=2
+                else:
+                    break
+            else:
+                if f[i] == 0:
+                    f[i-1] = 0
+                    f[i] = 0
+                    f[i+1] = 0
+                    i+=2
+                else:
+                    i+=1
+
+        print(f)
+        
+68. Преобразовать массив таким образом, чтобы сначала располагались все элементы, модуль которых не превышает единицу, а потом – все остальные.
