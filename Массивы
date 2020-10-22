@@ -1398,3 +1398,23 @@
         print(res)
 
 72. Дана упорядоченная последовательность an чисел от 1 до N. Из копии данной последовательности bn удалили одно число, а оставшиеся перемешали. Найти удаленное число.
+        import random
+
+        n = int(input("Number n: "))
+        massive = [i for i in range(1, n)]
+        print(massive)
+
+        b = int(input("Number b: "))-1
+        del massive[b]
+        print(massive)
+
+        qq = sorted(massive, key=lambda element: random.random())
+
+        for i in range(1, n):
+            if i not in qq:
+                print("Спрятанное число:", i)
+                break
+            else:
+                pass
+                
+73. Дан массив, в котором количество отрицательных элементов равно количеству положительным. Поменяйте местами первый отрицательный и первый положительный, второй отрицательный и второй положительный и так далее.
