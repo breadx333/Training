@@ -1568,3 +1568,28 @@
         print(sorted(massive1+massive2))
         
 80. Осуществить поиск данного числа в упорядоченном по возрастанию массиве методом бинарного поиска.
+        import random ##Просто великолепно!
+
+        massive = [random.randint(0, 99) for i in range(0, 10)]
+        massive.sort()
+        print(massive, len(massive))
+
+        value = int(input("Number value: "))
+
+        mid = len(massive)//2
+        left = 0
+        right = len(massive)-1
+
+        while massive[mid] != value and left <= right:
+            if value > massive[mid]:
+                left = mid + 1
+            else:
+                right = mid - 1
+            mid = (left + right)//2
+
+        if left>right:
+            print("No value")
+        else:
+            print("ID =", mid)
+            
+81. Дан массив натуральных чисел. Найти наименьшее натуральное число, не представимое суммой никаких элементов массива. Сумма может состоять и из одного слагаемого, но каждый элемент массива может входить в нее только один раз.
