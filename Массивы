@@ -1453,8 +1453,29 @@
 
         massive = [-1, 2, 5, -7, 1, 1001, -5, -9, 101, 8857, 222, 11]
 
-        counter = 0
+        i = 0
 
+        print(massive)
+
+        while i<len(massive):
+            if massive[i]>0:
+                slicew = list(str(massive[i]))
+                if len(slicew)>=2:
+                    if slicew[::-1] == slicew:
+                        del massive[i]
+                        i=i
+                    else:
+                        i+=1
+                else:
+                    i+=1
+            else:
+                i+=1
+
+        print(massive)
+        ###
+        import random ##Прикольно
+        massive = [-1, 2, 5, -7, 1, 1001, -5, -9, 101, 8857, 222, 11]
+        counter = 0
         for i in massive:
             if i>0:
                 slicew = list(str(i))
@@ -1468,8 +1489,9 @@
                     pass
             else:
                 pass
-
         if counter == 0:
             print("Massive have not numbers which more than 0 and have palindorme properety")
         else:
             print("Quantity such numbers:", counter)
+
+75. Дан массив. Сформировать новый массив, в котором идут сначала отрицательные элементы, затем нули, затем положительные.
