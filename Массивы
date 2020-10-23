@@ -1552,3 +1552,11 @@
         print(sorted(massive, key=lambda element: random.random()))
         
 78. В данном массиве каждый элемент равен 0, 1  или 2. Переставить элементы массива так, чтобы сначала располагались все нули, затем все единицы и, наконец, все двойки. Дополнительный массив не использовать.
+        import random
+
+        massive = sorted([random.randint(0, 2) for i in range(10)], key=lambda element: random.random())
+
+        print(massive)
+        print(sorted(massive))
+        
+79. Даны два упорядоченных по возрастанию массива. Образовать из этих двух массивов единый упорядоченный по возрастанию массив.
