@@ -1449,3 +1449,27 @@
         print(minus_massive)
 
 74. Удалите в целочисленном массиве все положительные числа, которые являются палиндромами.
+        import random
+
+        massive = [-1, 2, 5, -7, 1, 1001, -5, -9, 101, 8857, 222, 11]
+
+        counter = 0
+
+        for i in massive:
+            if i>0:
+                slicew = list(str(i))
+                if len(slicew)>=2:
+                    if slicew[::-1] == slicew:
+                        print("Palindrome:", i)
+                        counter+=1
+                    else:
+                        pass
+                else:
+                    pass
+            else:
+                pass
+
+        if counter == 0:
+            print("Massive have not numbers which more than 0 and have palindorme properety")
+        else:
+            print("Quantity such numbers:", counter)
