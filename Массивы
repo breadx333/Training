@@ -1418,3 +1418,34 @@
                 pass
                 
 73. Дан массив, в котором количество отрицательных элементов равно количеству положительным. Поменяйте местами первый отрицательный и первый положительный, второй отрицательный и второй положительный и так далее.
+        import random
+
+        massive = [-1, 2, 5, -7, 1, 1, -5, -9]
+
+        plus_massive = []
+        minus_massive = []
+
+        p = 0
+        m = 0
+
+        print(massive)
+
+        for i, j in enumerate(massive):
+            if j>=0:
+                plus_massive.append(j)
+            else:
+                minus_massive.append(j)
+
+        for i, j in enumerate(massive):
+            if j>=0:
+                massive[i] = minus_massive[m]
+                m+=1
+            else:
+                massive[i] = plus_massive[p]
+                p+=1
+
+        print(massive)
+        print(plus_massive)
+        print(minus_massive)
+
+74. Удалите в целочисленном массиве все положительные числа, которые являются палиндромами.
