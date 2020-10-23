@@ -1518,3 +1518,30 @@
         print(massive)
         
 76. Даны два массива. Определите все серии подряд идущих элементов из первого массива (серия может состоять и из одного элемента), каждая из которых совпадает с какой-нибудь серией подряд идущих элементов второго массива.
+        import random
+
+        massive1 = [-1, 2, 5, -7, 1, 5, 5, 6]
+        massive2 = [0, 0, 4, 3, 1, 4, 5, 6, 9, 6]
+
+        print(massive1)
+        print(massive2)
+
+        def ss(minm, maxm):
+            i = 0
+            coincidence = []
+
+            while i<len(minm):
+                if minm[i] == maxm[i]:
+                    coincidence.append(i+1)
+                    i+=1
+                else:
+                    i+=1
+
+            return coincidence
+
+        if len(massive1)>=len(massive2):
+            print("Элементы совпали на вот этих индексах:",ss(massive2, massive1))
+        else:
+            print("Элементы совпали на вот этих индексах:", ss(massive1, massive2))
+
+77. Дан массив из n элементов. Переставьте его элементы случайным образом.
