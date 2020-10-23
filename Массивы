@@ -1495,3 +1495,26 @@
             print("Quantity such numbers:", counter)
 
 75. Дан массив. Сформировать новый массив, в котором идут сначала отрицательные элементы, затем нули, затем положительные.
+        import random
+
+        massive = [-1, 2, 5, -7, 1, 1001, -5, -9, 101, 8857, 222, 11, 0, 0, 1, 0]
+
+        minus_num = []
+        zeros = []
+        plus_num = []
+
+        print(massive)
+
+        for i in massive:
+            if i<0:
+                minus_num.append(i)
+            elif i==0:
+                zeros.append(i)
+            else:
+                plus_num.append(i)
+
+        massive = minus_num + zeros + plus_num
+
+        print(massive)
+        
+76. Даны два массива. Определите все серии подряд идущих элементов из первого массива (серия может состоять и из одного элемента), каждая из которых совпадает с какой-нибудь серией подряд идущих элементов второго массива.
