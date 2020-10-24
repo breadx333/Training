@@ -1593,3 +1593,21 @@
             print("ID =", mid)
             
 81. Дан массив натуральных чисел. Найти наименьшее натуральное число, не представимое суммой никаких элементов массива. Сумма может состоять и из одного слагаемого, но каждый элемент массива может входить в нее только один раз.
+        import random ##Ебаный день потратил, и все еще не понял как работает этот код
+
+        def findSmallest(arr, n): 
+            res = 1
+
+            for i in range(0, n): 
+                if arr[i] <= res: 
+                    res = res + arr[i] 
+                else: 
+                    break
+
+            return res
+
+        massive = sorted([1, 2, 5, 10, 20, 40])
+
+        print(massive)
+        print(findSmallest(massive, len(massive)))
+
