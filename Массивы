@@ -1666,6 +1666,7 @@
                                     data[i], data[i+1] = data[i+1], data[i]
                                     changed = True
             return data
+        
         massive = [6, 4, 3, 1, 2, 3, 4, 6, 1, 2, 3, 4, 1, 5, 3, 1, 4, 3, 2, 1]
 
         print("Massive:", massive)
