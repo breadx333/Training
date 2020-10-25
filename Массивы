@@ -1637,8 +1637,8 @@
         print(result)
 
 83. Выполните сортировку массива следующими тремя способами: сортировкой выбором, сортировкой вставками, сортировкой обменом.
-        def sel_sort(array):
-            for i in range(len(array) - 1):
+        def selection_sort(array):
+            for i in range(len(array)):
                 m = i
                 j = i + 1
                 while j < len(array):
@@ -1646,9 +1646,20 @@
                         m = j
                     j = j + 1
                 array[i], array[m] = array[m], array[i]
+            return array
+
+        def insertion_sort(array):
+            for i in range(len(array)):
+                j = i - 1
+                while array[j]>array[i] and j>=0:
+                    array[j+1] = array[j]
+                    j-=1
+                array[j+1] = array[i]
+            return array
 
         massive = [6, 4, 3, 1, 2, 3, 4, 6, 1, 2, 3, 4, 1, 5, 3, 1, 4, 3, 2, 1]
 
-        print(massive)
-        sel_sort(massive)
-        print(massive)
+        print("Massive:", massive)
+        print("Selection:", selection_sort(massive))
+        print("Insertion:", insertion_sort(massive))
+
