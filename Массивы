@@ -1684,3 +1684,58 @@
             if red == i:
                 print(i, k)
                 break
+
+85. Даны координаты центров окружностей и их радиусы. Определите количество пар окружностей, которые пересекаются.
+        import math
+
+        count = 0
+        touch_count = 0
+        inRound_count = 0
+        doublePoint_count = 0
+
+        def crossing(args): #Если сумма радиусов меньше расстояние между центрами, то пересекаются
+            global count, touch_count, inRound_count, doublePoint_count
+            x = 0
+            y = 1
+            r = 2
+            PSumRad = args[0][r] + args[1][r]
+            MSumRad = args[0][r] - args[1][r]
+            Distance = math.sqrt((args[1][x] - args[0][x])**2 + (args[1][y] - args[0][y])**2)
+            if Distance > PSumRad:
+                pass
+            elif Distance == PSumRad:
+                count+=1
+                touch_count+=1
+            elif Distance == MSumRad:
+                count+=1
+                touch_count+=1
+            elif MSumRad < Distance < PSumRad:
+                count+=1
+                doublePoint_count+=1
+            elif Distance < MSumRad:
+                count+=1
+                inRound_count+=1
+            else:
+                pass
+
+        coordinates = [-2, 3, 5], [4, 3, 1], [7, 7, 5]
+        pairs = []
+
+        for i in coordinates:
+            for j in coordinates:
+                l = [i, j]
+                rev = list(reversed(l))
+                if l not in pairs and i!=j and rev not in pairs:
+                    pairs.append(l)
+                else:
+                    pass
+
+        for i in pairs:
+            print(i)
+            crossing(i)
+            print(doublePoint_count)
+
+        print("Количество пересечений:", count)
+        print("Количество пересечений с касаниями:", touch_count)
+        print("Количество пересечение, но один круг внутри другого:", inRound_count)
+        print("Количество пересечений, круги который пересекаются в двух точках:", doublePoint_count)
