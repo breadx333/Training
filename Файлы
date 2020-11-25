@@ -1,1 +1,54 @@
+1. Дан текстовый файл, содержащий целые числа. Удалить из него все четные числа.
+        try: #Проверка на существование файла
+            file = open("file.txt", "x")
+        except FileExistsError:
+            pass
 
+        while True: #Добавление текста в файл, каждый добавленный текст разделяется от предыдущего новой строкой, для перехода к следующему пункту надо написать "stop"
+            file = open("file.txt", "a")
+
+            Value = input("Enter your text: ")
+
+            if Value == "stop":
+                break
+            else:
+                file.write(Value + "\n")
+                file.close
+            '''
+            elif not Value.isdigit(): #Примитивная версия для добавлния только цифр в файл
+                print("---Enter Number pls---")
+            '''
+
+        fileOpen = open("file.txt", "r") #Открытие и чтение текста в строку для дальнейшей обработки
+        text = fileOpen.read()
+        print("Original:", text)
+        fileOpen.close()
+
+        buffer = "" #Буфер в котором находится еще не до конца обработанный текст
+        num = [] #Буфер для цифр
+
+        for symbol in text: #Проходим линейно по нашей полученной строке
+            ###File consist of: "Note: the "w" 23  44method will 1 overwrite the entire 22file."
+
+            if symbol.isdigit(): #Проверяем число ли наш символ, если да, то запоминаем его
+                num.append(symbol)
+            else:
+                try: #Символ уже не число, пробуем проверить четное ли число в нашем буфере, четные не попадают в основной обработанный буфер
+                    checkOnTwo = int("".join(num)) % 2
+
+                    if checkOnTwo == 0:
+                        pass
+                    else:
+                        buffer += "".join(num)
+                    buffer += symbol
+                    num = []
+                except ValueError:
+                    buffer += symbol
+
+
+        fileWrite = open("file.txt", "w") #Стираем файл и записываем наш буфер в файл
+        fileWrite.write(buffer)
+        fileWrite.close()
+
+        fileOpen = open("file.txt", "r") #Полученный результат можно сразу увидеть в интерактивном окне
+        print("Result:", fileOpen.read())
