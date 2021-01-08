@@ -56,3 +56,24 @@ int main()
     return 0;
 }
 ```
+
+Begin4°. Дан диаметр окружности d. Найти ее длину L = π·d. В качестве значения π использовать 3.14.
+```
+#include <stdio.h>
+
+int main()
+{
+    float L, d;
+
+    const float PI = 3.14;
+
+    printf("Enter <d>: ");
+    scanf("%f", &d);
+
+    L = PI * d;
+
+    printf("perimeter circumference = %f\n", L);
+
+    return 0;
+}
+```
