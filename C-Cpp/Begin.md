@@ -77,3 +77,27 @@ int main()
     return 0;
 }
 ```
+
+Begin5°. Дана длина ребра куба a. Найти объем куба V = a^3 и площадь его поверхности S = 6·a^2. 
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float V, S, a;
+
+    printf("Enter <a>: ");
+    scanf("%f", &a);
+
+    V = pow(a, 3);
+    S = 6 * pow(a, 2);
+
+    printf("Cube Volume = %f\n", V);
+    printf("Cube Square = %f\n", S);
+
+    return 0;
+}
+```
+
+Begin6°. Даны длины ребер a, b, c прямоугольного параллелепипеда. Найти его объем V = a·b·c и площадь поверхности S = 2·(a·b + b·c + a·c). 
