@@ -101,3 +101,46 @@ int main()
 ```
 
 Begin6°. Даны длины ребер a, b, c прямоугольного параллелепипеда. Найти его объем V = a·b·c и площадь поверхности S = 2·(a·b + b·c + a·c). 
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float V, S, a, b, c;
+
+    printf("Enter <a b c>: ");
+    scanf("%f:%f:%f", &a, &b, &c);
+
+    V = a * b * c;
+    S = 2 * (a*b + b*c + a*c);
+
+    printf("Cube Volume = %f\n", V);
+    printf("Cube Square = %f\n", S);
+
+    return 0;
+}
+```
+
+Begin7°. Найти длину окружности L и площадь круга S заданного радиуса R:
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    const float PI = 3.14;
+    float L, S, R;
+
+    printf("Enter <R>: ");
+    scanf("%f", &R);
+
+    L = 2 * PI * R;
+    S = PI * pow(R, 2);
+
+    printf("Lenght = %f\n", L);
+    printf("Square = %f\n", S);
+
+    return 0;
+}
+```
