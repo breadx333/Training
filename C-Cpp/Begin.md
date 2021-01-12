@@ -146,3 +146,25 @@ int main()
 ```
 
 Begin8°. Даны два числа a и b. Найти их среднее арифметическое: (a + b)/2. 
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double Medium, a, b;
+
+    printf("Enter <a:b>: ");
+    scanf("%d:%d", &a, &b);
+
+    Medium = (a + b) / 2;
+
+    printf("Medium = %d\n", Medium);
+
+    return 0;
+}
+```
+Begin9°. Даны два неотрицательных числа a и b. Найти их среднее геометрическое, т. е. квадратный корень из их произведения: (a·b)^1/2.
+```
+
+```
