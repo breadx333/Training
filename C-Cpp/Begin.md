@@ -166,5 +166,25 @@ int main()
 ```
 Begin9°. Даны два неотрицательных числа a и b. Найти их среднее геометрическое, т. е. квадратный корень из их произведения: (a·b)^1/2.
 ```
+#include <iostream>
+#include <math.h>
 
+using namespace std;
+
+void geometry_medium(double a, double b)
+{
+    cout << "Result: " << sqrt(a * b) << "\n";
+}
+
+int main()
+{
+    int a, b;
+
+    cout << "Add a: ";
+    cin >> a;
+    cout << "Add b: ";
+    cin >> b;
+
+    geometry_medium(a, b);
+}
 ```
