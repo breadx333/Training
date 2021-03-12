@@ -249,3 +249,63 @@ int main()
 }
 
 ```
+Begin11°. Даны два ненулевых числа. Найти сумму, разность, произведение и частное их модулей. 
+```
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+double summary(double a, double b)
+{
+    return a + b;
+}
+
+double difference(double a, double b)
+{
+    return abs(a - b);
+}
+
+double composting(double a, double b)
+{
+    return a * b;
+}
+
+double private_modules(double a, double b)
+{
+    return abs(a)/abs(b);
+}
+
+void goto_list(double a, double b)
+{
+    cout << "Summary: " << summary(a, b) << "\n";
+    cout << "Difference: " << difference(a, b) << "\n";
+    cout << "Composting: " << composting(a, b) << "\n";
+    cout << "Private Modules: " << private_modules(a, b) << "\n\n";
+}
+
+int main()
+{
+    bool Check = true;
+
+    while(Check)
+    {
+        double a, b;
+
+        cout << "Add a: ";
+        cin >> a;
+        cout << "Add b: ";
+        cin >> b;
+
+        if (a == 0 || b == 0)
+        {
+            cout << "Note: Add non zero number.\n\n";
+        }
+        else
+        {
+            goto_list(a, b);
+        }
+    }
+}
+
+```
