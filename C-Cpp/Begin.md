@@ -309,3 +309,43 @@ int main()
 }
 
 ```
+Begin12°. Даны катеты прямоугольного треугольника a и b. Найти его гипотенузу c и периметр P: c = (a2 + b2)1/2, P = a + b + c.
+```
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+void print_data(double a, double b)
+{
+    double c = sqrt((a*a)+(b*b));
+    double P = a + b + c;
+
+    cout << "c = " << c << "\n";
+    cout << "P = " << P << "\n\n";
+}
+
+int main()
+{
+    bool Check = true;
+
+    while(Check)
+    {
+        double a, b;
+
+        cout << "Add a: ";
+        cin >> a;
+        cout << "Add b: ";
+        cin >> b;
+
+        if (a == 0 or b == 0)
+        {
+            cout << "Triangle not exist\n\n";
+        }
+        else
+        {
+            print_data(a, b);
+        }
+    }
+}
+```
