@@ -44,3 +44,19 @@ int main()
     return 0;
 }
 ```
+4. Объявить переменные, необходимые для вычисления площади круга.
+```
+#include <iostream>
+
+int main()
+{
+    double r = 0;
+    const double pi = 3.1416;
+
+    std::cin >> r;
+    std::cout << "Area of circe: " << pi * (r * r) << std::endl;
+
+    return 0;
+}
+
+```
