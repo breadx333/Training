@@ -114,3 +114,22 @@ int main()
     return 0;
 }
 ```
+8. Объявить переменные, необходимые для вычисления стоимости покупки, состоящей из нескольких тетрадей и такого же количества обложек. ///Задания ебанутые конечно...
+```
+#include <iostream>
+
+int main()
+{
+    float CenaTetr = 2.8;
+    int KolTetr = 3;
+
+    float CenaObl = 0.5;
+    int KolObl = 3;
+
+    float Summa = (CenaTetr * KolTetr) + (CenaObl * KolObl);
+
+    std::cout << Summa << std::endl;
+
+    return 0;
+}
+```
