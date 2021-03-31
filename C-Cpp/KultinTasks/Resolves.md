@@ -60,3 +60,17 @@ int main()
 }
 
 ```
+5. Объявить переменные, необходимые для вычисления площади кольца. 
+```
+#include <iostream>
+
+int main()
+{
+    const float pi = 3.1416;
+    float r1 = 0, r2 = 0;
+    std::cin >> r1 >> r2;
+    float s = pi * (r1 - r2);
+    std::cout << s << std::endl;
+    return 0;
+}
+```
