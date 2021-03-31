@@ -28,3 +28,19 @@ int main()
     return 0;
 }
 ```
+3. Определить исходные данные и объявить переменные, необходимые для вычисления дохода по вкладу.
+```
+#include <iostream>
+
+int main()
+{
+    float summa = 100000;
+    int srok = 40;
+    int stavka = 1;
+    float dohod = summa / 100 * stavka / 365 * srok;
+
+    std::cout << dohod << std::endl;
+
+    return 0;
+}
+```
