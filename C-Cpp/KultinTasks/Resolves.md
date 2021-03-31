@@ -74,7 +74,7 @@ int main()
     return 0;
 }
 ```
-Объявить переменные, необходимые для вычисления объема и площади поверхности цилиндра.
+6. Объявить переменные, необходимые для вычисления объема и площади поверхности цилиндра.
 ```
 #include <iostream>
 
@@ -88,6 +88,28 @@ int main()
     double s = 2 * pi * r * (r + h); //(2 * pi * r * h) + (2 * pi * (r * r));
 
     std::cout << v << ' ' << s << std::endl;
+
+    return 0;
+}
+```
+7. Объявить переменные, необходимые для вычисления стоимости покупки, состоящей из нескольких тетрадей, карандашей и линейки.
+```
+#include <iostream>
+
+int main()
+{
+    float CenaTetr = 3.2;
+    int KolTetr = 6;
+
+    float CenaKar = 2.6;
+    int KolKar = 2;
+
+    float CenaLin = 4;
+    int KolLin = 1;
+
+    float Summa = (CenaTetr * KolTetr) + (CenaKar * KolKar) + (CenaLin * KolLin);
+
+    std::cout << Summa << std::endl;
 
     return 0;
 }
