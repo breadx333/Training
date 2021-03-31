@@ -74,3 +74,21 @@ int main()
     return 0;
 }
 ```
+Объявить переменные, необходимые для вычисления объема и площади поверхности цилиндра.
+```
+#include <iostream>
+
+int main()
+{
+    const double pi = 3.1416;
+    double r = 3;
+    double h = 6;
+
+    double v = (pi * (r * r)) * h;
+    double s = 2 * pi * r * (r + h); //(2 * pi * r * h) + (2 * pi * (r * r));
+
+    std::cout << v << ' ' << s << std::endl;
+
+    return 0;
+}
+```
