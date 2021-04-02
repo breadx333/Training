@@ -812,3 +812,99 @@ int main()
     return 0;
 }
 ```
+51. Написать программу вычисления площади прямоугольника. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float length = 0, width = 0;
+    float S = 0;
+
+    printf("Calculating the area of a rectangle\n");
+    printf("Enter Data:\n");
+    printf("Length -> ");
+    scanf("%f", &length);
+    printf("Width -> ");
+    scanf("%f", &width);
+
+    S = length * width;
+
+    printf("Area of a rectangle: %.2f sq. cm.\n", S);
+
+    return 0;
+}
+```
+52. Написать программу вычисления площади параллелограмма.
+```
+#include <stdio.h>
+
+int main()
+{
+    float d1 = 0, d2 = 0;
+    float S = 0;
+
+    printf("Enter Alpha and height: ");
+    scanf("%f %f", &d1, &d2);
+
+    S = 0.5 * d1 * d2;
+
+    printf("S: %f", S);
+
+    return 0;
+}
+```
+53. Написать программу вычисления объема параллелепипеда. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float length = 0, width = 0, height = 0;
+    float v = 0;
+
+    printf("Сalculating the volume of a parallelepiped\n");
+    printf("Enter initial data:");
+    printf("length -> ");
+    scanf("%f", &length);
+    printf("width -> ");
+    scanf("%f", &width);
+    printf("heigth -> ");
+    scanf("%f", &height);
+
+    v = length * width * height;
+
+    printf("Volume: %.2f c. cm.", v);
+
+    return 0;
+}
+```
+54. Написать программу вычисления площади поверхности параллелепипеда. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float l, w, h;
+    float s;
+
+    printf("\nCalculating square of surface rectangle\n");
+    printf("Enter initial data:\n");
+    printf("Length -> ");
+    scanf("%f", &l);
+    printf("Width -> ");
+    scanf("%f", &w);
+    printf("Height -> ");
+    scanf("%f", &h);
+
+    s = (l*w + l*h + w*h)*2;
+
+    printf("Square of surface: %6.2f sq. cm.\n", s);
+    printf("\n\nTo complete calculating press <Enter>");
+    getchar();
+
+    return 0;
+}
+```
+55. Написать программу вычисления объема куба. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
