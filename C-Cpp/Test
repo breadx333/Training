@@ -121,3 +121,124 @@ int main() {
     }
     return 0;
 }
+-----------------------------------------------
+#include <iostream>
+#include <string>
+
+using std::cin; using std::cout; using std::endl; using std::string;
+
+class Person {
+friend std::istream &read(std::istream &is, Person &item);
+friend std::ostream &print(std::ostream &os, const Person &item);
+
+public:
+    Person() = default;
+    Person(const string &name): Name(name) {}
+    Person(const string &name, const string &adress):
+        Name(name), Adress(adress) {}
+    Person(std::istream &is) { read(is, *this); }
+
+    string getName() const { return Name; }
+    string getAdress() const { return Adress; }
+private:
+    string Name;
+    string Adress;
+};
+
+class Sales_data {
+friend Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
+friend std::istream &read(std::istream &is, Sales_data &item);
+friend std::ostream &print(std::ostream &os, const Sales_data &item);
+
+public:
+    Sales_data() = default;
+    Sales_data(const string &s): bookNo(s) {}
+    Sales_data(const string &s, unsigned n, double p):
+        bookNo(s), units_sold(n), revenue(p*n) {}
+    Sales_data(std::istream &is) { read(is, *this); }
+
+    string isbn() const { return bookNo; }
+    Sales_data& combine(const Sales_data&);
+private:
+    double avg_price() const {return units_sold ? revenue/units_sold : 0;}
+    string bookNo;
+    unsigned transCnt = 1;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+};
+
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs) {
+    Sales_data sum = lhs;
+    sum.combine(rhs);
+    return sum;
+}
+
+std::istream &read(std::istream &is, Sales_data &item) {
+    double price = 0.0;
+    is >> item.bookNo >> item.units_sold >> price;
+    item.revenue = item.units_sold * price;
+    return is;
+}
+
+std::istream &read(std::istream &is, Person &item) {
+    is >> item.Name >> item.Adress;
+    return is;
+}
+
+std::ostream &print(std::ostream &os, const Sales_data &item) {
+    os << "BookNo: " << item.isbn() << '\n'
+       << "Units Sold: " << item.units_sold << '\n'
+       << "Revenue: " << item.revenue << '\n'
+       << "Trans Count: " << item.transCnt << endl;
+    return os;
+}
+
+std::ostream &print(std::ostream &os, const Person &item) {
+    os << "Name: " << item.Name << '\n'
+       << "Adress: " << item.Adress << endl;
+    return os;
+}
+
+Sales_data& Sales_data::combine(const Sales_data &rhs) {
+    units_sold += rhs.units_sold;
+    revenue += rhs.revenue;
+    ++transCnt;
+    return *this;
+}
+
+int main() {
+    Person human(cin);
+    Sales_data total;
+
+    print(cout, human);
+
+    cout << "Enter Name and Adress:" << endl;
+    if (read(cin, human)) {
+        print(cout, human);
+    }
+    else {
+        std::cerr << "No data" << endl;
+        return -1;
+    }
+
+    if (read(cin, total)) {
+        Sales_data trans;
+
+        while (read(cin, trans)) {
+            if (total.isbn() == trans.isbn()) {
+                total.combine(trans);
+            }
+            else {
+                print(cout, total);
+                total = trans;
+            }
+        }
+        print(cout, total);
+    }
+    else {
+        std::cerr << "No data" << endl;
+        return -1;
+    }
+    return 0;
+}
+
