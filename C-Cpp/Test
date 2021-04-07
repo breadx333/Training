@@ -468,3 +468,46 @@ int main() {
 
     return 0;
 }
+-----------------------------------------
+#include <iostream>
+#include <string>
+#include <vector>
+
+using std::cin; using std::cout; using std::endl; using std::string; using std::vector;
+
+class Debug {
+public:
+    constexpr Debug(bool b = true): io(b), hw(b), time(b), other(b) {}
+    constexpr Debug(bool i, bool h, bool t, bool o):
+                                    io(i), hw(h), time(t), other(o) {}
+
+    constexpr bool any() const { return io || hw || time || other; }
+
+    void set_io(bool b) { io = b; }
+    void set_hw(bool b) { hw = b; }
+    void set_time(bool b) { time = b; }
+    void set_other(bool b) { other = b; }
+private:
+    bool io;
+    bool hw;
+    bool time;
+    bool other;
+};
+
+int main() {
+    constexpr Debug test(false, false, false, false);
+
+    if (test.any())
+        std::cerr << "Error" << endl;
+    cout << "Debug completed" << endl;
+
+    Debug test2 = false;
+    if (test2.any())
+        std::cerr << "Error" << endl;
+    cout << "Debug Completed" << endl;
+
+    test2.set_time(true);
+    if (test2.any())
+        std::cerr << "Error" << endl;
+    cout << "Debut Completed" << endl;
+}
