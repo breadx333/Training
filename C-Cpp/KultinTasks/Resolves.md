@@ -953,3 +953,88 @@ int main()
     return 0;
 }
 ```
+57. Написать программу вычисления стоимости покупки, состоящей из нескольких тетрадей и карандашей. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float price_notebook;
+    unsigned cnt_notebook;
+    float price_pen;
+    unsigned cnt_pen;
+
+    float sum;
+
+    printf("Calculating purchase value\n");
+    printf("Enter initial data:\n");
+    printf("Notebook price -> ");
+    scanf("%f", &price_notebook);
+    printf("Number of notebook -> ");
+    scanf("%u", &cnt_notebook);
+    printf("Pen price -> ");
+    scanf("%f", &price_pen);
+    printf("Number of pen -> ");
+    scanf("%u", &cnt_pen);
+
+    sum = price_notebook * cnt_notebook + price_pen * cnt_pen;
+
+    printf("Purchase Amount: %6.2f\n", sum);
+    getchar();
+
+    return 0;
+}
+```
+58. Написать программу вычисления стоимости покупки, состоящей из нескольких тетрадей и такого же количества обложек к ним. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float price_notebook = 0;
+    float price_cover = 0;
+    unsigned cnt_set = 0;
+    float sum = 0;
+
+    printf("Calculating purchase value\n");
+    printf("Enter initial data:\n");
+    printf("Notebook price -> ");
+    scanf("%f", &price_notebook);
+    printf("Cover price -> ");
+    scanf("%f", &price_cover);
+    printf("Number of Sets: ");
+    scanf("%u", &cnt_set);
+
+    sum = (price_notebook + price_cover) * cnt_set;
+
+    printf("Purchase Amount: %.2f", sum);
+
+    return 0;
+}
+```
+59. Написать программу вычисления стоимости некоторого количества (по весу), например, яблок. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float price_kg = 0;
+    float weight = 0;
+    float sum = 0;
+
+    printf("Calculating purchase value\n");
+    printf("Enter initial data:\n");
+    printf("Price per kg -> ");
+    scanf("%f", &price_kg);
+    printf("Apple weight -> ");
+    scanf("%f", &weight);
+
+    sum = price_kg * weight;
+
+    printf("Purchase Amount: %.2f\n", sum);
+
+    return 0;
+}
+```
+60. Написать программу вычисления площади треугольника, если известна длина его основания и высота. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
