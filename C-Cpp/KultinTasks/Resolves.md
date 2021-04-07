@@ -908,3 +908,48 @@ int main()
 ```
 55. Написать программу вычисления объема куба. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float edge_length = 0;
+    float ValueOfCube = 0;
+
+    printf("Enter the lenght of the edge: ");
+    scanf("%f", &edge_length);
+
+    ValueOfCube = edge_length * edge_length * edge_length;
+
+    printf("Value of Cube: %f\n", ValueOfCube);
+
+    return 0;
+}
+```
+56. Написать программу вычисления объема цилиндра. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    const float PI = 3.141592;
+    float radius = 0;
+    float height = 0;
+    float Value = 0;
+
+    printf("Calculating Value of Cylinder\n");
+    printf("Enter initial data:\n");
+    printf("Base Radius -> ");
+    scanf("%f", &radius);
+    printf("Height -> ");
+    scanf("%f", &height);
+
+    Value = PI * (radius * radius) * height;
+
+    printf("Value of Cylinder: %f\n", Value);
+
+    printf("Press <Enter> to finish\n");
+    getchar();
+
+    return 0;
+}
+```
