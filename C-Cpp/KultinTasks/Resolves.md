@@ -1181,3 +1181,148 @@ int main()
 ```
 66.  Написать программу вычисления стоимости поездки на автомобиле. Исходные данные: расстояние (км); количество бензина (в литрах), которое потребляет автомобиль на 100 км пробега; цена одного литра бензина. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float distance = 0, gasoline_consumption = 0, price = 0;
+    float cost = 0;
+
+    printf("Calculating the cost of a trip by car\n");
+    //printf("Enter the initial data:\n");
+    printf("Distance -> ");
+    scanf("%f", &distance);
+    printf("Gasoline consumption -> ");
+    scanf("%f", &gasoline_consumption);
+    printf("Price of a liter of gasoline -> ");
+    scanf("%f", &price);
+
+    cost = distance * (gasoline_consumption/100) * price;
+
+    printf("\nThe trip will cost %f.2\n", cost);
+
+    return 0;
+}
+```
+67. Написать программу, которая вычисляет скорость, с которой спортсмен пробежал дистанцию. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float distance = 0, time = 0;
+    int time_m = 0, time_s = 0;
+    float ts = 0;
+    float speed = 0;
+
+    printf("Calculating running speed\n");
+    //printf("Enter the initial data:\n");
+    printf("Enter distance -> ");
+    scanf("%f", &distance);
+    printf("Enter time -> ");
+    scanf("%f", &time);
+
+    time_m = time;
+    time_s = (time - time_m) * 100;
+    ts = time_m * 60 + time_s;
+
+    speed = (distance/1000) / (ts / 3600);
+
+    printf("Distance: %f\n", distance);
+    printf("Time: %i min %i sec = %f sec\n", time_m, time_s, ts);
+    printf("Speed: %f km/h\n", speed);
+
+    return 0;
+}
+```
+68. Написать программу вычисления объема цилиндра. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    const float PI = 3.141592;
+    float radius = 0, height = 0;
+    float volume = 0;
+
+    printf("Calculation of the volume of a cylinder\n");
+    printf("Enter the initial data:\n");
+    printf("Base radius -> ");
+    scanf("%f", &radius);
+    printf("Height -> ");
+    scanf("%f", &height);
+
+    volume = PI * (radius*radius) * height;
+
+    printf("The volume of the cylinder is %.2f cm cc.\n", volume);
+
+    return 0;
+}
+```
+69. Написать программу вычисления площади поверхности цилиндра. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    const float PI = 3.141592;
+    float radius = 0, height = 0;
+    float square = 0;
+
+    printf("Calculation of the surface area of a cylinder\n");
+    printf("Enter the initial data:\n");
+    printf("Base radius -> ");
+    scanf("%f", &radius);
+    printf("Height -> ");
+    scanf("%f", &height);
+
+    square = 2 * (PI * (radius*radius)) + (2 * PI * radius * height);
+
+    printf("Cylinder surface area: %.2f sq. cm.\n", square);
+
+    return 0;
+}
+```
+70. Написать программу вычисления объема параллелепипеда. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    const float PI = 3.141592;
+    float length = 0, width = 0, height = 0;
+    float volume = 0;
+
+    printf("Calculating the volume of a box\n");
+    printf("Enter the box's length, width, and height (in centimeters) on one line\n-> ");
+    scanf("%f %f %f", &length, &width, &height);
+
+    volume = length * width * height;
+
+    printf("The volume of the parallelepiped is %.2f cm cb.\n", volume);
+
+    return 0;
+}
+```
+71. Написать программу пересчета расстояния из миль в километры (1 миля равна 1600,94 м). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float miles = 0;
+    float kilometres = 0;
+
+    printf("Converting distance from miles to kilometers\n");
+    printf("Enter distance in miles -> ");
+    scanf("%f", &miles);
+
+    kilometres = miles * 1600.94 / 1000;
+
+    printf("\n%.2f miles is %.2f km\n", miles, kilometres);
+
+    return 0;
+}
+```
+72. Написать программу пересчета веса из фунтов в килограммы (1 российский фунт равен 405,9 г). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
