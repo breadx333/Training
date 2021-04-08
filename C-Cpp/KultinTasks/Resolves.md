@@ -1062,4 +1062,122 @@ int main()
 ```
 61. Написать программу вычисления площади треугольника, если известны длины двух его сторон и величина угла между этими сторонами. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#define _USE_MATH_DEFINES
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float a = 0, b = 0;
+    float angle = 0;
+    float square = 0;
+
+    printf("Calculating the area of a triangle\n");
+    printf("Enter the lengths of the sides on one line:\n-> ");
+    scanf("%f %f", &a, &b);
+    printf("Enter the angle between sidie:\n-> ");
+    scanf("%f", &angle);
+
+    square = a*b*sin(angle*M_PI/180)/2;
+
+    printf("\nSquare of Triangle: %f\n", square);
+
+    return 0;
+}
+```
+62. Написать программу вычисления сопротивления электрической цепи, состоящей из двух параллельно соединенных сопротивлений. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float R1 = 0, R2 = 0;
+    float R = 0;
+
+    printf("Calculating of the resistance of an electrical\n");
+    printf("circuit with parallel connection of elements\n");
+    printf("Enter the initial data:\n");
+    printf("The value of the first resistance -> ");
+    scanf("%f", &R1);
+    printf("The value of the second resistance -> ");
+    scanf("%f", &R2);
+
+    R = R1*R2/(R1+R2);
+
+    printf("\nCircuit resistance: %f\n", R);
+
+    return 0;
+}
+```
+63. Написать программу вычисления сопротивления электрической цепи, состоящей из двух последовательно соединенных сопротивлений. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float R1 = 0, R2 = 0;
+    float R = 0;
+
+    printf("Calculating of the resistance of an electrical circuit\n");
+    printf("Enter the initial data:\n");
+    printf("The value of the first resistance -> ");
+    scanf("%f", &R1);
+    printf("The value of the second resistance -> ");
+    scanf("%f", &R2);
+
+    R = R1 + R2;
+
+    printf("\nCircuit resistance (Serial connection ): %f\n", R);
+
+    return 0;
+}
+```
+64. Написать программу вычисления силы тока в электрической цепи. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float V = 0, R = 0;
+    float I = 0;
+
+    printf("Calculation of the current in an electrical target\n");
+    printf("Enter the initial data:\n");
+    printf("Voltage -> ");
+    scanf("%f", &V);
+    printf("Resistance -> ");
+    scanf("%f", &R);
+
+    I = V / R;
+
+    printf("\nCurrent: %f\n", I);
+
+    return 0;
+}
+```
+65. Написать программу вычисления расстояния между населенными пунктами, показанными на карте. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float scale_map = 0, distance_cm = 0;
+    float distance_km = 0;
+
+    printf("Calculation of the distance between settlements\n");
+    printf("Enter the initial data:\n");
+    printf("Scale -> ");
+    scanf("%f", &scale_map);
+    printf("Between points -> ");
+    scanf("%f", &distance_cm);
+
+    distance_km = scale_map * distance_cm;
+
+    printf("\nThe distance between the points is %f\n", distance_km);
+
+    return 0;
+}
+```
+66.  Написать программу вычисления стоимости поездки на автомобиле. Исходные данные: расстояние (км); количество бензина (в литрах), которое потребляет автомобиль на 100 км пробега; цена одного литра бензина. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
