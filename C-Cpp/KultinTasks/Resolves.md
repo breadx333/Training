@@ -1464,3 +1464,163 @@ int main()
     return 0;
 }
 ```
+78. Написать программу вычисления сопротивления электрической цепи, состоящей из двух сопротивлений, которые могут быть соединены последовательно или параллельно. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+//    const float PI = 3.141592;
+    float R1, R2;
+    unsigned choose;
+    float R;
+
+    printf("Calculating the resistance of the electrical circuit\n");
+    printf("Enter the initial data:\n");
+    printf("The value of the first resistance -> ");
+    scanf("%f", &R1);
+    printf("The value of the second resistance -> ");
+    scanf("%f", &R2);
+    printf("Connection type (1-series, 2-parallel) -> ");
+    scanf("%u", &choose);
+
+    if (0 < choose && choose < 3) {
+        if (choose == 1)
+            R = R1 + R2;
+        else
+            R = R1*R2/(R1+R2);
+    }
+    else {
+        printf("\nError: choose series or parallel connection\n");
+        return -1;
+    }
+
+    printf("\nCircuit resistance: %.2f Om.\n", R);
+    getchar();
+
+    return 0;
+}
+```
+79. Написать программу вычисления дохода по вкладу. Исходные данные: сумма и срок вклада. Процентная ставка зависит от суммы. Если сумма меньше 5000 руб., то процентная ставка 10%, если больше, то 13%. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным)
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float amount, term;
+    float annual_interest, income, end_amount;
+
+    printf("Income\n");
+    printf("Amount -> ");
+    scanf("%f", &amount);
+    printf("Deposit term -> ");
+    scanf("%f", &term);
+
+    if (amount < 5000)
+        annual_interest = 10;
+    else
+        annual_interest = 13;
+
+    income = amount * annual_interest/100/12 * term;
+    end_amount = amount + income;
+
+    printf("--------------------\n");
+    printf("Amount: %.2f\n", amount);
+    printf("Deposit term: %.2f\n", term);
+    printf("Annual interest: %.2f\n", annual_interest);
+    printf("Income: %.2f\n", income);
+    printf("Amount at the end of the term of the deposit: %.2f\n", end_amount);
+
+    return 0;
+}
+```
+80. Написать программу вычисления дохода по вкладу. Исходные данные: сумма и срок вклада. Процентная ставка зависит от суммы. Если сумма меньше 5000 руб., то процентная ставка 9%, если больше 5000 руб., но меньше 10 000 руб., то 11%, а если больше 10 000, то 13%. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float amount, term;
+    float annual_interest, income, end_amount;
+
+    printf("Income\n");
+    printf("Amount -> ");
+    scanf("%f", &amount);
+    printf("Deposit term -> ");
+    scanf("%f", &term);
+
+    if (amount < 5000)
+        annual_interest = 10;
+    else
+        if (amount < 10000)
+            annual_interest = 11;
+        else
+            annual_interest = 13;
+
+    income = amount * annual_interest/100/12 * term;
+    end_amount = amount + income;
+
+    printf("--------------------\n");
+    printf("Amount: %.2f\n", amount);
+    printf("Deposit term: %.2f mon.\n", term);
+    printf("Annual interest: %.2f\n", annual_interest);
+    printf("Income: %.2f\n", income);
+    printf("Amount at the end of the term of the deposit: %.2f\n", end_amount);
+
+    return 0;
+}
+```
+81. Написать программу вычисления стоимости печати фотографий. Формат фотографий 9x12 или 10x15. Если количество фотографий больше 10, то заказчику предоставляется скидка 5%. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int main()
+{
+    int format, quantity;
+    float price, amount;
+    float discount = 0, total;
+
+    printf("PHOTO\n");
+    printf("Format (1 - 9x12; 2 - 10x15) -> ");
+    scanf("%i", &format);
+    printf("Quantity, pcs. -> ");
+    scanf("%i", &quantity);
+
+    if (0 < format && format < 3) {
+        if (format == 1)
+            price = 2.50;
+        else
+            price = 3.20;
+    }
+    else {
+        printf("Error\n");
+        return -1;
+    }
+
+    amount = quantity * price;
+
+    if (quantity > 10) {
+        discount = amount * 0.05;
+        total = amount - discount;
+    }
+
+    printf("--------------------\n");
+    printf("Price: %f\n", price);
+    printf("Quantity: %i pcs.\n", quantity);
+    printf("Amount: %.2f\n", amount);
+    if(discount != 0) {
+        printf("Discount: %.2f\n", discount);
+        printf("To pay: %.2f\n", total);
+    }
+    
+    return 0;
+}
+```
+82. Написать программу, которая вычисляет величину тока, потребляемого электроприбором (/ = P/U, где: I— ток, А; Р — мощность, Вт; U— напряжение, В). Программа должна проверять правильность введенных пользователем данных и, если они неверные (делитель равен нулю), выводить сообщение об ошибке. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+
