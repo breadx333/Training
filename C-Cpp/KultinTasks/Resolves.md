@@ -1326,3 +1326,140 @@ int main()
 ```
 72. Написать программу пересчета веса из фунтов в килограммы (1 российский фунт равен 405,9 г). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float pounds = 0;
+    float killogramms = 0;
+
+    printf("Conversion of weight from pounds to kilograms\n");
+    printf("Enter weight in pounds -> ");
+    scanf("%f", &pounds);
+
+    killogramms = pounds * 405.9 / 1000;
+
+    printf("\n%.2f pounds - is %.2f kg\n", pounds, killogramms);
+
+    return 0;
+}
+73. Написать программу вычисления дохода по вкладу. Сумма, процентная ставка (% годовых) и срок вклада (в месяцах) задаются во время работы программы. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float amount, term, rate;
+    float Income, Summ;
+
+    printf("Calculation of deposit income\n");
+    printf("Enter the initial data:\n");
+    printf("Deposit amount -> ");
+    scanf("%f", &amount);
+    printf("Deposit term -> ");
+    scanf("%f", &term);
+    printf("Interest rate -> ");
+    scanf("%f", &rate);
+
+    Income = amount * rate/12/100 * term;
+    Summ = amount + Income;
+
+    printf("-----------------------------\n");
+    printf("Income: %.2f\n", Income);
+    printf("Amount at the end of the term of the deposit: %.2f\n", Summ);
+
+    return 0;
+}
+```
+74. Написать программу пересчета величины временного интервала, заданного в минутах, в величину, выраженную в часах и минутах. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int minutes;
+    int time_h, time_m;
+
+    printf("Enter the time interval -> ");
+    scanf("%i", &minutes);
+
+    time_h = minutes / 60;
+    time_m = minutes % 60;
+
+    printf("%i minutes - is %i h. %i min.\n", minutes, time_h, time_m);
+
+    return 0;
+}
+```
+75. Написать программу, которая преобразует введенное с клавиатуры дробное число в денежный формат. Например, число 12.5 должно быть преобразовано к виду 12 руб. 50 коп. Далее приведен рекомендуемый вид экрана (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float number;
+    int rub, kop;
+
+    printf("Convert number to currency format\n");
+    printf("Enter fractional number -> ");
+    scanf("%f", &number);
+
+    rub = number;
+    kop = number * 100 - rub * 100;
+
+    printf("%.2f rubles - is %i rub. %i kop.\n", number, rub, kop);
+
+    return 0;
+}
+```
+76. Написать программу пересчета веса из фунтов в килограммы (1 фунт= 405,9 г). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float pounds;
+    float weight;
+    int kg, gr;
+
+    printf("Converting weight from pounds to kilograms\n");
+    printf("Enter the weight in pounds\n-> ");
+    scanf("%f", &pounds);
+
+    weight = pounds * 405.9;
+    kg = weight / 1000;
+    gr = weight - kg * 1000;
+
+    printf("%.2f lb - is %i kg %i gr.\n", pounds, kg, gr);
+
+    return 0;
+}
+```
+77. Написать программу, которая вычисляет площадь треугольника, если известны координаты его углов. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x1, y1;
+    int x2, y2;
+    int x3, y3;
+    float square;
+
+    printf("Calculating the area of a triangle\n");
+    printf("Enter the coordinates of the angles\n");
+    printf("x1, y1 -> ");
+    scanf("%i %i", &x1, &y1);
+    printf("x2, y2 -> ");
+    scanf("%i %i", &x2, &y2);
+    printf("x3, y3 -> ");
+    scanf("%i %i", &x3, &y3);
+
+    square = abs((x2-x1)*(y3-y1)-(x3-x1)*(y2-y1))/2;
+
+    printf("\nArea of the triangle: %.2f square meters\n", square);
+
+    return 0;
+}
+```
