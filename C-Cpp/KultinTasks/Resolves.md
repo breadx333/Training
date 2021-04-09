@@ -2476,6 +2476,7 @@ int main()
         break;
     case 4:
         price = 18.50;
+        break;
     default:
         price = 0;
         break;
@@ -2498,4 +2499,206 @@ int main()
 }
 ```
 108. Написать программу, которая запрашивает у пользователя номер дня недели и затем выводит его название. Если введены неправильные данные, программа должна вывести сообщение об ошибке.
+```
+#include <stdio.h>
+
+int main()
+{
+    int nd;
+
+    puts("Enter number of week (1..7)");
+    printf("-> ");
+    scanf("%i", &nd);
+
+    switch (nd) {
+    case 1:
+        puts("Monday\n");
+        break;
+    case 2:
+        puts("Tuesday\n");
+        break;
+    case 3:
+        puts("Wednesday\n");
+        break;
+    case 4:
+        puts("Thursday\n");
+        break;
+    case 5:
+        puts("Friday\n");
+        break;
+    case 6:
+        puts("Saturday\n");
+        break;
+    case 7:
+        puts("Sunday\n");
+        break;
+    default:
+        puts("Enter number between 1..7\n");
+        break;
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+109. Написать программу, которая вычисляет доход по вкладу. Процентная ставка зависит от срока вклада:
+```
+#include <stdio.h>
+
+int main()
+{
+    float val;
+    int period;
+    float rate;
+    float profit;
+
+    printf("Value -> ");
+    scanf("%f", &val);
+    printf("Period -> ");
+    scanf("%i", &period);
+
+    switch (period) {
+    case 3:
+        rate = 9.0;
+        break;
+    case 6:
+        rate = 11.5;
+        break;
+    case 12:
+        rate = 13.5;
+        break;
+    case 18:
+        rate = 15.0;
+        break;
+    case 24:
+        rate = 18.0;
+        break;
+    case 36:
+        rate = 24;
+        break;
+    default:
+        period = 0;
+        break;
+    }
+
+    if (period != 0) {
+        printf("Rate: %.2f\n", rate);
+        profit = val * rate/100/2 * period;
+        printf("Profit: %.2f\n", profit);
+    }
+    else
+        printf("Not valid period\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+110. Написать программу, которая вычисляет стоимость междугороднего телефонного разговора (цена одной минуты зависит от расстояния до города, в котором находится абонент). Исходные данные для программы: код города и длительность разговора. Далее приведены коды некоторых городов и рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int code;
+    float price;
+    int duration;
+    float amount;
+
+    printf("Calculation of the cost of a phone call\n");
+    printf("Enter the initial data:\n");
+    puts("Vladivostok\t432");
+    puts("Moscow\t\t495");
+    puts("Murmansk\t815");
+    puts("Samara\t\t846");
+    printf("Area code -> ");
+    scanf("%i", &code);
+    printf("Call duration (whole number of minutes) -> ");
+    scanf("%i", &duration);
+
+    printf("City: ");
+    switch (code) {
+    case 432:
+        puts("Vladivostok");
+        price = 2.2;
+        break;
+    case 495:
+        puts("Moscow");
+        price = 1;
+        break;
+    case 815:
+        puts("Murmansk");
+        price = 1.2;
+        break;
+    case 846:
+        puts("Samara");
+        price = 1.4;
+        break;
+    default:
+        printf("Invalid code entered\n");
+        break;
+    }
+
+    if (price != 0) {
+        amount = price * duration;
+        printf("Price per minute: %.2f\n", price);
+        printf("Call cost: %.2f\n", amount);
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+111. Написать программу, которая по дате определяет соответствующий ей день недели. Для вычисления дня недели воспользуйтесь формулой: d = (day+(13*m-1)/5+y+y/4+c/4-2*c+777)%7;
+```
+#include <stdio.h>
+
+int main()
+{
+    int day, month, year;
+
+    int c, y;
+    int m;
+    int d;
+
+    puts("Determination of the day of the week by date\n");
+    puts("Enter date: day month year");
+    puts("For example: 5 12 2001");
+    printf("-> ");
+    scanf("%i %i %i", &day, &month, &year);
+
+    if (month == 1 || month == 2)
+        --year;
+
+    m = month - 2;
+    if (m <= 0) m += 12;
+    c = year / 100;
+    y = year - c*100;
+
+    d = (day+(13*m-1)/5+y+y/4+c/4-2*c+777)%7;
+
+    switch (d) {
+    case 1: puts("Monday"); break;
+    case 2: puts("Tuesday"); break;
+    case 3: puts("Wednesday"); break;
+    case 4: puts("Thursday"); break;
+    case 5: puts("Friday"); break;
+    case 6: puts("Saturday"); break;
+    case 0: puts("Sunday");
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
 ```
