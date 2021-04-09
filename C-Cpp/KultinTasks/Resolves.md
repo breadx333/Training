@@ -2007,3 +2007,318 @@ int main()
 ```
 95. Написать программу, которая выводит пример на вычитание (в пределах 100), запрашивает ответ пользователя, проверяет его и выводит сообщение «Правильно!» или «Вы ошиблись» и правильный результат. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int a, b;
+    int res;
+    int answer;
+
+    srand(time(NULL));
+
+    a = rand() % 100 + 1;
+    b = rand() % 100 + 1;
+    res = a - b;
+
+    printf("How much %i-%i?\n", a, b);
+    printf("Enter the answer -> ");
+    scanf("%i", &answer);
+
+    if (answer == res)
+        printf("Correct!\n");
+    else
+        printf("You are wrong. %i-%i=%i %i\n", a, b, res, answer);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+96. Написать программу, которая проверяет, является ли введенное пользователем целое число четным. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int answer;
+
+    printf("Enter an integer -> ");
+    scanf("%i", &answer);
+
+    if (answer % 2 == 0)
+        printf("The number %i is even\n", answer);
+    else
+        printf("The number %i is odd\n", answer);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+97. Написать программу, которая проверяет, делится ли на три введенное с клавиатуры целое число. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int answer;
+
+    printf("Enter an integer -> ");
+    scanf("%i", &answer);
+
+    if (answer % 3 == 0)
+        printf("%i is divisible by three\n", answer);
+    else
+        printf("%i is not divisible by three\n", answer);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+98. Написать программу вычисления стоимости разговора по телефону с учетом 20%-ной скидки, предоставляемой по субботам и воскресеньям. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int time;
+    int day;
+    float amount;
+
+    printf("Calculating the cost of a telephone call\n");
+    printf("Enter the initial data:\n");
+    printf("Duration of the call -> ");
+    scanf("%i", &time);
+    printf("Day of the week -> ");
+    scanf("%i", &day);
+
+    amount = 2.3 * time;
+
+    if (day == 6 || day == 7) {
+        printf("Discount 20%\n");
+        amount = amount * 0.8;
+    }
+    printf("The cost: %.2f\n", amount);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+99. Написать программу, которая вычисляет оптимальный вес человека, сравнивает его с реальным и выдает рекомендацию о необходимости поправиться или похудеть. Оптимальный вес вычисляется по формуле: Рост (см) - 100. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float w;
+    float h;
+    float opt;
+    float d;
+
+    printf("Enter in one line, with a space, height (cm) and weight (kg)\n-> ");
+    scanf("%f %f", &h, &w);
+
+    opt = h - 100;
+
+    if (w == opt) {
+        printf("Your weight is optimal\n");
+    }
+    else if (w < opt) {
+        d = opt - w;
+        printf("You need to recover by %.2f kg.\n", d);
+    }
+    else {
+        d = w - opt;
+        printf("You need to recover by %.2f kg.\n", d);
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+100. Написать программу, которая запрашивает у пользователя номер месяца и затем выводит соответствующее название времени года. Если пользователь введет недопустимое число, программа должна вывести сообщение «Ошибка данных». Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int month;
+
+    puts("Enter number of month (1 - 12)");
+    printf("-> ");
+    scanf("%i", &month);
+
+    if (month < 1 || month > 12)
+        printf("Enter number between 1 - 12\n");
+    else if (month >= 3 && month <= 5)
+        printf("Spring\n");
+    else if (month >= 6 && month <= 8)
+        printf("Summer\n");
+    else if (month >= 9 && month <= 11)
+        printf("Autumn\n");
+    else
+        printf("Winter\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+101. Написать программу, которая запрашивает у пользователя номер дня недели и выводит одно из сообщений: «Рабочий День», «Суббота» или «Воскресенье.
+```
+#include <stdio.h>
+
+int main()
+{
+    int day;
+
+    printf("Enter number of week -> ");
+    scanf("%i", &day);
+
+    if (day < 1 || day > 7)
+        printf("Enter number between 1 - 7\n");
+    else if (day == 6)
+        printf("Saturday\n");
+    else if (day == 7)
+        printf("Sunday\n");
+    else
+        printf("Weekdays\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+102. Написать программу, которая отображает введенное пользователем число (от 1 до 999) в денежном формате: дописывает слово «рубль» в правильной форме— например, 12 рублей, 21 рубль и т. д.
+```
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    int r;
+
+    printf("Enter an integer, no more than 999 -> ");
+    scanf("%i", &n);
+    printf("%i ", n);
+
+    if (n > 100)
+        r = n % 100;
+    else
+        r = n;
+
+    if (r >= 11 && r <= 14)
+        printf("rubley\n");
+    else {
+        r = r % 10;
+        if (r >= 2 && r <= 4)
+            printf("rublya\n");
+        else if (r == 1)
+            printf("ruble\n");
+        else
+            printf("rubley");
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+103. Написать программу, которая после введенного с клавиатуры числа (в диапазоне от 1 до 99), обозначающего денежную единицу, дописывает слово «копейка» в правильной форме — например, 5 копеек, 41 копейка и т. д.
+```
+#include <stdio.h>
+
+int main()
+{
+    int n;
+
+    printf("Enter an integer, no more than 99 -> ");
+    scanf("%i", &n);
+    printf("%i ", n);
+
+    if (n == 1)
+        printf("kopeyka\n");
+    else if (n >= 2 && n <= 4)
+        printf("kopeyki\n");
+    else
+        printf("kopeek\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+104. Написать программу, которая вычисляет дату следующего дня. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int day;
+    int month;
+    int year;
+    int last = 0;
+    int r;
+
+    printf("Enter today's date in numbers in one line (number month year) -> ");
+    scanf("%i %i %i", &day, &month, &year);
+
+    if (month == 2) {
+        if ((year % 4) != 0 && day == 28) last = 1;
+        if ((year % 4) == 0 && day == 29) last = 1;
+    }
+    else if ((month == 4 || month == 6 || month == 9 || month == 11)
+             && (day == 31))
+                last = 1;
+    else if (day == 31)
+        last = 1;
+
+    if (last == 1) {
+        printf("Last day in month!\n");
+        day = 1;
+        if (month == 12) {
+            month = 1;
+            ++year;
+            printf("Happy New Year!\n");
+        }
+        else
+            ++month;
+    }
+    else
+        ++day;
+
+    printf("Tomorrow %i %i %i\n", day, month, year);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+105. Написать программу, которая позволяет вычислить цену жалюзи. Исходные данные: размер (ширина и высота, выраженные в сантиметрах) и тип материала (пластик, текстиль, алюминий). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
