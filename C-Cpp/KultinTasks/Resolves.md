@@ -1623,4 +1623,187 @@ int main()
 ```
 82. Написать программу, которая вычисляет величину тока, потребляемого электроприбором (/ = P/U, где: I— ток, А; Р — мощность, Вт; U— напряжение, В). Программа должна проверять правильность введенных пользователем данных и, если они неверные (делитель равен нулю), выводить сообщение об ошибке. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
 
+int main()
+{
+    float power, voltage, amperage;
+
+    char c;
+
+    printf("Current in electric circuit\n");
+    printf("Power, W - > ");
+    scanf("%f", &power);
+    printf("Voltage, V - > ");
+    scanf("%f", &voltage);
+
+    if (voltage != 0) {
+        amperage = power / voltage;
+        printf("\nCurrent in circuit: %.2f A\n", amperage);
+    }
+    else
+        printf("\nError! The voltage must not be zero\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+83. Написать программу вычисления площади кольца. Программа должна проверять правильность исходных данных. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float r_ring, r_hole;
+    float s;
+
+    printf("Calculating the area of the ring\n");
+    printf("Enter the initial data\n");
+    printf("Radius of the ring (cm) -> ");
+    scanf("%f", &r_ring);
+    printf("radius of the hole (cm) - > ");
+    scanf("%f", &r_hole);
+
+    if (r_ring > r_hole) {
+        s = 2 * 3.141592 * (r_ring-r_hole);
+        printf("\nSquare of circle: %.2f sq. cm.\n", s);
+    }
+    else
+        printf("\nError! The radius of the hole should not be larger than the radius of the rings\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+84. Написать программу, которая переводит время из минут и секунд в секунды. Программа должна проверять правильность введенных пользователем данных и в случае, если данные неверные, выводить соответствующее сообщение. Далее приведен рекомендуемый вид экрана программы (ошибочные данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    float time;
+    int timeInSec, minutes, secondes;
+
+    printf("Enter the time (minutes.seconds) -> ");
+    scanf("%f", &time);
+
+    minutes = time;
+    secondes = (time - minutes) * 100;
+
+    if (secondes > 60) {
+        printf("\nError!\nThe number of seconds cannot be more than 60\n");
+    }
+    else {
+        timeInSec = minutes * 60 + secondes;
+        printf("%i min. %i sec. = %i sec\n", minutes, secondes, timeInSec);
+    }
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+85. Написать программу, которая проверяет, является ли год високосным. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int year;
+    int r;
+
+    printf("Enter the year\n-> ");
+    scanf("%i", &year);
+
+    r = year % 4;
+
+    if (r) {
+        printf("\n%i not leap year\n", year);
+    }
+    else {
+        printf("%i is leap year\n", year);
+    }
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+86. Написать программу решения квадратного уравнения. Программа должна проверять правильность исходных данных и в случае, если коэффициент при второй степени неизвестного равен нулю, выводить соответствующее сообщение. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float a, b, c;
+    float x1, x2;
+    float d;
+
+    printf("Solution of the quadratic equation\n");
+    printf("Type the values of the coefficients in one line\n-> ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    d = b*b - 4*a*c;
+
+    if (d < 0) {
+        printf("\nThe equation has no solution\n");
+    }
+    else {
+        x1 = (-b + sqrt(d))/(2*a);
+        x2 = (-b - sqrt(d))/(2*a);
+        printf("\nThe roots of the equation:\n");
+        printf("x1 = %.2f\n", x1);
+        printf("x2 = %.2f\n", x2);
+    }
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+87. Написать программу вычисления стоимости покупки с учетом скидки. Скидка в 10% предоставляется, если сумма покупки больше 1000 руб. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float amount, total;
+    int discount = 0;
+
+    printf("Calculation of the purchase price taking into account the discount\n");
+    printf("Purchase amount -> ");
+    scanf("%f", &amount);
+
+    if (amount > 1000) {
+        discount = 10;
+        total = amount - (amount/discount);
+    }
+    else {
+        total = amount;
+    }
+
+    printf("You are given a discount of %i%%\n", discount);
+    printf("Purchase amount including discount: %.2f\n", total);
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+88. Написать программу вычисления стоимости покупки с учетом скидки. Скидка в 3% предоставляется, если сумма покупки больше 500 руб, в 5% — если сумма больше 1000 руб. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
