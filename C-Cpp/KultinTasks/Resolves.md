@@ -2322,3 +2322,180 @@ int main()
 ```
 105. Написать программу, которая позволяет вычислить цену жалюзи. Исходные данные: размер (ширина и высота, выраженные в сантиметрах) и тип материала (пластик, текстиль, алюминий). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float w, h;
+    int m;
+
+    float price;
+    float s;
+    float amount;
+
+    printf("Blinds\n");
+
+    printf("Width -> ");
+    scanf("%f", &w);
+    printf("Height -> ");
+    scanf("%f", &h);
+
+    printf("Material:\n");
+    printf("1 - plastic\n");
+    printf("2 - textile\n");
+    printf("3 - aluminum\n");
+    scanf("%i", &m);
+
+    switch (m) {
+    case 1:
+        price = 200;
+        break;
+    case 2:
+        price = 250;
+        break;
+    case 3:
+        price = 350;
+        break;
+    default:
+        price = 0;
+        break;
+    }
+
+    if (price != 0) {
+        s = (w * h) / 10000;
+        amount = s * price;
+        printf("Price for sq. m.: %.2f\n", price);
+        printf("Square: %.2f sq. m.\n", s);
+        printf("To payment: %.2f\n", amount);
+    }
+    else
+        printf("The material is not specified correctly\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+106. Написать программу, которая позволяет вычислить стоимость печати фотографий. Исходные данные: размер фотографий (9x12, 10x15 или 18x24) и их количество. Если заказанных фотографий больше 10, заказчику должна предоставляться скидка 10%. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int format, quantity;
+
+    float price;
+    float amount;
+    float discount;
+    float total;
+
+    printf("Photo\n");
+
+    printf("Size:\n");
+    printf("1 - 9x12\n");
+    printf("2 - 10x15\n");
+    printf("3 - 18x24\n");
+    printf("Your choice -> ");
+    scanf("%i", &format);
+    printf("Quantity -> ");
+    scanf("%i", &quantity);
+
+    switch (format) {
+    case 1:
+        price = 3.50;
+        break;
+    case 2:
+        price = 5.00;
+        break;
+    case 3:
+        price = 8.50;
+        break;
+    default:
+        price = 0;
+        break;
+    }
+
+    if (price != 0) {
+        amount = quantity * price;
+        printf("Price: %.2f\n", price);
+        printf("Quantity: %i\n", quantity);
+        if (quantity > 10) {
+            discount = amount * 0.1;
+            total = amount - discount;
+            printf("Amount: %.2f\n", amount);
+            printf("Discount: %.2f\n", discount);
+            printf("Total: %.2f\n", total);
+        }
+        else
+            printf("To pay: %.2f\n", total);
+    }
+    else
+        printf("Material code is incorrect\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+107. Написать программу, которая позволяет вычислить стоимость заправки автомобиля. Исходные данные: тип топлива (бензин 92, 95, 98 или дизельное топливо) и количество литров. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int brand;
+    float price;
+
+    float liters;
+    float amount;
+
+    printf("Petrol\n");
+    printf("Petrol brand:\n");
+    printf("1 - 92\n");
+    printf("2 - 95\n");
+    printf("3 - 98\n");
+    printf("4 - DT\n");
+    printf("Your choice -> ");
+    scanf("%i", &brand);
+    printf("Liters -> ");
+    scanf("%f", &liters);
+
+    switch (brand) {
+    case 1:
+        price = 17.50;
+        break;
+    case 2:
+        price = 20.30;
+        break;
+    case 3:
+        price = 25.40;
+        break;
+    case 4:
+        price = 18.50;
+    default:
+        price = 0;
+        break;
+    }
+
+    if (price != 0) {
+        amount = liters * price;
+        printf("Price per liter: %.2f\n", price);
+        printf("Liters: %.2f\n", liters);
+        printf("To pay: %.2f\n", amount);
+    }
+    else
+        printf("The fuel code is incorrect\n");
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+108. Написать программу, которая запрашивает у пользователя номер дня недели и затем выводит его название. Если введены неправильные данные, программа должна вывести сообщение об ошибке.
+```
