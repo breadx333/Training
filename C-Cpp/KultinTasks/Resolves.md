@@ -1807,3 +1807,203 @@ int main()
 ```
 88. Написать программу вычисления стоимости покупки с учетом скидки. Скидка в 3% предоставляется, если сумма покупки больше 500 руб, в 5% — если сумма больше 1000 руб. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float amount, total;
+    int discount = 0;
+
+    printf("Calculating purchase price including discount\n");
+    printf("Enter purchase amount -> ");
+    scanf("%f", &amount);
+
+    if (amount < 500) {
+        total = amount;
+    }
+    else {
+        if (amount < 1000) {
+            discount = 3;
+        }
+        else
+            discount = 5;
+        total = amount - (amount/discount);
+    }
+
+    printf("You are given a discount of %i%%\n", discount);
+    printf("Purchase amount including discount: %.2f\n", total);
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+89. Написать программу проверки знания истории — например, даты основания Санкт-Петербурга. В случае неправильного ответа пользователя программа должна выводить правильную дату. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int year;
+
+    printf("In what year was St. Petersburg founded?\n");
+    printf("Enter the number -> ");
+    scanf("%i", &year);
+
+    if (year == 1703)
+        printf("Correct answer.\n");
+    else
+        printf("You are wrong. St. Petersburg was founded in 1703.\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+90. Написать программу проверки знания даты начала Второй мировой войны. В случае неправильного ответа пользователя программа должна выводить правильную дату. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int year;
+
+    printf("In what year did World War II begin?\n");
+    printf("Enter the number -> ");
+    scanf("%i", &year);
+
+    if (year == 1939)
+        printf("Correct.\n");
+    else
+        printf("You are wrong. World War II began in 1939.\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+91. Написать программу проверки знания истории архитектуры. Программа должна вывести вопрос и три варианта ответа. Пользователь должен выбрать правильный ответ и ввести его номер. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int var;
+
+    printf("Architect of St. Isaac's Cathedral:\n");
+    printf("1. Domenico Trezzini\n");
+    printf("2. Auguste Ionferrand\n");
+    printf("3. Carl Rossi\n");
+    printf("Enter the correct answer\n-> ");
+    scanf("%i", &var);
+
+    if (var == 2)
+        printf("Correct.\n");
+    else
+        printf("You are wrong. Architect of St. Isaac's Cathedral - Auguste Ionferrand\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+92. Написать программу проверки знания истории архитектуры. Программа должна вывести вопрос и три варианта ответа. Пользователь должен выбрать правильный ответ и ввести его номер. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int var;
+
+    printf("Nevsky Prospekt got its name:\n");
+    printf("1. Named after the river on the banks of which is located St. Petersburg.\n");
+    printf("2. Named after the nearby monastery of the Alexander Nevsky Lavra.\n");
+    printf("3. In memory of the 6 famous commander Alexander Nevsky.\n");
+    printf("Enter the correct answer\n-> ");
+    scanf("%i", &var);
+
+    if (var == 2)
+        printf("Correct.\n");
+    else {
+        printf("You are wrong.\n");
+        printf("Correct answer: 2\n");
+    }
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+93. Написать программу, которая сравнивает два введенных с клавиатуры числа. Программа должна указать, какое число больше, или, если числа равны, вывести соответствующее сообщение. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int i1, i2;
+
+    printf("Enter two integers in one line\n-> ");
+    scanf("%i %i", &i1, &i2);
+
+    if (i1 < i2)
+        printf("%i less than %i\n", i1, i2);
+    else if (i1 > i2)
+        printf("%i more than %i\n", i1, i2);
+    else
+        printf("The numbers are equal\n");
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+94. Написать программу, которая выводит пример на умножение двух однозначных чисел, запрашивает ответ пользователя, проверяет его и выводит сообщение «Правильно!» или «Вы ошиблись» и правильный результат. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int m1, m2, p;
+    int answer;
+    time_t t;
+
+    srand((unsigned) time(&t));
+
+    m1 = rand() % 9 + 1;
+    m2 = rand() % 9 + 1;
+
+    p = m1 * m2;
+
+
+    printf("How much will %ix%i be?", m1, m2);
+    printf("Enter the answer -> ");
+    scanf("%i", &answer);
+
+    if (answer == p)
+        printf("Correct.\n");
+    else
+        printf("You are wrong. %ix%i=%i\n", m1, m2, p);
+
+    printf("Press <Enter> to continue");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+95. Написать программу, которая выводит пример на вычитание (в пределах 100), запрашивает ответ пользователя, проверяет его и выводит сообщение «Правильно!» или «Вы ошиблись» и правильный результат. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
