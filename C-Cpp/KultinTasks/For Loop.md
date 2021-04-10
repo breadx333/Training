@@ -142,3 +142,50 @@ int main()
 ```
 117. Написать программу, которая выводит таблицу ежемесячных платежей по кредиту. Исходные данные для расчета: сумма кредита, срок и процентная ставка. Предполагается, что кредит возвращается (выплачивается) ежемесячно равными долями. Проценты начисляются ежемесячно на величину долга. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float amount;
+    float term;
+    float rate;
+
+    float dept;
+    float interest;
+    float paying;
+    float suminterest;
+
+    printf("Amount -> ");
+    scanf("%f", &amount);
+    printf("Term -> ");
+    scanf("%f", &term);
+    printf("Interest rate -> ");
+    scanf("%f", &rate);
+
+    dept = amount;
+    suminterest = 0;
+
+    printf("----------------------\n");
+    printf("Debt Interest Payment \n");
+    printf("----------------------\n");
+
+    for (int i = 1; i <= term; ++i) {
+        interest = dept * (rate/12/100);
+        suminterest += interest;
+        paying = amount/term + interest;
+        printf("%2i  %9.2f %9.2f %9.2f\n", i, dept, interest, paying);
+        dept = dept - amount/term;
+    }
+
+    printf("----------------------\n");
+    printf("Total percent: %3.2f\n", suminterest);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+118. Написать программу, которая выводит на экран таблицу соответствия температуры в градусах Цельсия и Фаренгейта (F°= 5/9-С°+32). Диапазон изменения температуры в градусах Цельсия и шаг должны вводиться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
