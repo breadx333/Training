@@ -30,3 +30,39 @@ char* rus(char st[])
     return st2;
 }
 ```
+Interest Code
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define L 10
+#define N 3
+
+int main()
+{
+    int number;
+    int sum;
+    float avg;
+
+    printf("Random numbers\n");
+
+    srand((unsigned) time(NULL));
+
+    for (int i = 0; i < N; ++i) {
+        sum = 0;
+        for (int j = 0; i < L; ++j) {
+            number = rand() % 99 + 1;
+            printf("%2i ");
+        }
+        avg = sum / L;
+        printf("Avg: %.2f\n", avg);
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
