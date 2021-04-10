@@ -649,3 +649,261 @@ int main()
 ```
 132. Написать программу, которая выводит на экран таблицу стоимости, например, яблок в диапазоне от 100 г до 1 кг с шагом 100 г. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    float price;
+    float total;
+
+    printf("Enter price per kg\n-> ");
+    scanf("%f", &price);
+
+    printf("Weight\t\tPrice\n");
+
+    for (int i = 1; i <= 10; ++i) {
+        total = price*(i*100)/1000;
+        printf("%i\t\t%.2f\n", i, total);
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+133. Написать программу, которая выводит таблицу значений функции у = | х |. Диапазон изменения аргумента от -4 до 4, шаг приращения аргумента 0,5.
+```
+#include <stdio.h>
+#include <math.h>
+
+#define LB -4
+#define HB 4
+#define DX 0.5
+
+int main()
+{
+    float x, y;
+    int n;
+    int i;
+
+    printf("Table of func. values y = |x|\n");
+    n = (HB - LB)/DX + 1;
+    x = LB;
+
+    for (i = 1; i <= n; ++i) {
+        y = fabs(x);
+        printf("%4.2f\t%3.2f\n", x, y);
+        x += DX;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+134. Написать программу, которая выводит таблицу значений функции у = | х - 2 | + | х + 1 |. Диапазон изменения аргумента от -4 до 4, шаг приращения аргумента 0,5.
+```
+#include <stdio.h>
+#include <math.h>
+
+#define LB -4
+#define HB 4
+#define DX 0.5
+
+int main()
+{
+    float x, y;
+    int n;
+    int i;
+
+    printf("Table of func. values y = |x-2|+|x+1|\n");
+    n = (HB - LB)/DX + 1;
+    x = LB;
+
+    for (i = 1; i <= n; ++i) {
+        y = fabs(x - 2) + fabs(x + 1);
+        printf("%.2f\t\t%.2f\n", x, y);
+        x += DX;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+135. Написать программу, которая выводит на экран таблицу умножения, например, на 7. Далее приведен рекомендуемый вид экрана программы.
+```
+#include <stdio.h>
+
+int main()
+{
+    int m;
+
+    int n;
+    int p;
+
+    m = 7;
+    printf("Multiplication table\n");
+    for (n = 1; n <= 9; ++n) {
+        p = m * n;
+        printf("%ix%i=%i\n", m, n, p);
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+136. Написать программу, которая выводит на экран квадрат Пифагора— таблицу умножения. Далее приведен рекомендуемый вид экрана программы.
+```
+#include <stdio.h>
+
+int main()
+{
+    int i, j;
+
+    printf("%4s", " ");
+    for (j = 1; j <= 10; ++j)
+        printf("%4i", j);
+    printf("\n");
+
+    for (i = 1; i <= 10; ++i) {
+        for (j = 1; j <= 10; ++j) {
+            if (j == 1)
+                printf("%4i", i);
+            printf("%4i", i*j);
+        } printf("\n");
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+137. Написать программу, которая вычисляет частичную сумму ряда: 1 - 1/3 + 1/5 - 1/7 + 1/9... и сравнивает полученное значение с я/4 (при суммировании достаточно большого количества членов этого ряда, величина частичной суммы приближается к я/4).
+```
+#include <stdio.h>
+
+int main()
+{
+    float x;
+    int n;
+    float sum;
+    int i;
+
+    printf("Calculation of the number ""PI"" using\n");
+    printf("the properties of the series 1 -1/3 + 1/5 - 1/7 + ...\n");
+    printf("Enter the number of summed members of the series -> ");
+    scanf("%i", &n);
+    sum = 0;
+    for (i = 1; i <= n; ++i) {
+        x = (float)1/(2*i - 1);
+
+        if ((i % 2) == 0) x = -1 * x;
+        sum += x;
+    }
+
+    printf("Sum of the series: %2.6f\n", sum);
+    printf("Calculated value of PI = %2.6f\n", sum*4);
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+138. Написать программу приближенного вычисления интеграла функции XX) = 5х2-х + 2 методом прямоугольников. Диапазон xl, х2 и шаг изменения аргумента Ах должны задаваться во время работы программы.
+```
+#include <stdio.h>
+
+int main()
+{
+    float a, b;
+    float dx;
+    float s;
+    int n;
+    float x;
+    float y;
+
+    printf("Approximate calculation of the integral\n");
+    printf("Lower bound of the range -> ");
+    scanf("%f", &a);
+    printf("Upper bound of the range -> ");
+    scanf("%f", &b);
+    printf("Argument equals -> ");
+    scanf("%f", &dx);
+
+    n = (b - a) / dx + 1;
+    x = a;
+    s = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        y = x*x + 2;
+        s += y*dx;
+        x += dx;
+    }
+
+    printf("Integral value: %.2f\n", s);
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+139. Написать программу приближенного вычисления интеграла функции Дх) = 5х2 - х + 2 методом трапеций. Границы интервала xl, х2 и шаг приращения аргумента Дх должны задаваться во время работы программы.
+```
+#include <stdio.h>
+
+int main()
+{
+    float a, b;
+    float dx;
+    float s;
+    int n;
+    float x;
+    float y1, y2;
+    int i;
+
+    printf("Approximate calculation of the integral\n");
+    printf("Lower bound of the range -> ");
+    scanf("%f", &a);
+    printf("Upper bound of the range -> ");
+    scanf("%f", &b);
+    printf("Argument equals -> ");
+    scanf("%f", &dx);
+
+    n = (b - a) / dx;
+    x = a;
+    s = 0;
+
+    for (i = 1; i <= n; ++i) {
+        y1 = x*x + 2;
+        x += dx;
+        y2 = x*x + 2;
+        s += (y1 + y2)*dx/2;
+    }
+
+    printf("Integral value: %6.3f\n", s);
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+140. Написать программу, которая выводит на экран изображение шахматной доски. Черные клетки отображать «звездочкой», белые — пробелом. Далее приведен рекомендуемый вид экрана программы.
+```
