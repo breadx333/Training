@@ -470,3 +470,144 @@ int main()
 ```
 127. Написать программу, которая вычисляет среднее арифметическое вводимой с клавиатуры последовательности дробных чисел. Количество чисел должно задаваться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    float number;
+    float sum = 0;
+    float arithmetic_mean;
+
+    printf("The arithmetic mean of a sequence of fractional numbers\n");
+    printf("Enter the number of numbers in the sequence -> ");
+    scanf("%i", &n);
+    printf("After entering each number\n");
+
+    for (int i = 0; i < n; ++i) {
+        printf("-> ");
+        scanf("%f", &number);
+        sum += number;
+    }
+
+    arithmetic_mean = sum / n;
+
+    printf("The arithmetic mean of the entered sequence: %.2f\n", arithmetic_mean);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+128. Написать программу, которая вводит с клавиатуры последовательность из пяти дробных чисел и после ввода каждого числа выводит среднее арифметическое введенной части последовательности. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int n = 5;
+    float number;
+    float sum = 0;
+    float avg;
+
+    printf("Processing a sequence of fractional numbers\n");
+    printf("After entering each number press <Enter>\n");
+
+    for (int i = 1; i <= n; ++i) {
+        printf("-> ");
+        scanf("%f", &number);
+        sum += number;
+        avg = sum / i;
+        printf("Numbers entered: %i Amount: %.2f Avg. arithmetic: %.2f\n", i, sum, avg);
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+129. Написать программу, которая вычисляет среднее арифметическое последовательности дробных чисел, вводимых с клавиатуры. После ввода последнего числа программа должна вывести минимальное и максимальное числа последовательности. Количество чисел последовательности должно задаваться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int i;
+    int n;
+    float number;
+    float minimum, maximum;
+    float sum;
+    float avg;
+
+    printf("Processing a sequence of fractional numbers\n");
+    printf("Enter the number of numbers in the sequence -> ");
+    scanf("%i", &n);
+    printf("Enter the sequence. After entering each number, press <Enter>\n");
+
+    printf("-> ");
+    scanf("%f", &number);
+
+    minimum = number;
+    maximum = number;
+    sum = number;
+
+    for (i = 2; i <= n; ++i) {
+        printf("-> ");
+        scanf("%f", &number);
+        sum += number;
+        if (number < minimum) minimum = number;
+        if (number > maximum) maximum = number;
+    }
+
+    avg = sum / n;
+
+    printf("Cnt: %i\n", n);
+    printf("Avg mean: %.2f\n", avg);
+    printf("Min: %.2f\n", minimum);
+    printf("Max: %.2f\n", maximum);
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+130. Написать программу, которая генерирует последовательность из 10 случайных чисел (в диапазоне от 1 до 10), выводит эти числа на экран и вычисляет их среднее арифметическое. Далее приведен рекомендуемый вид экрана программы.
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    float sum = 0;
+    float number;
+    float avg;
+    time_t t;
+
+    srand((unsigned)time(&t));
+
+    for (int i = 0; i < 10; ++i) {
+        number = rand() % 9 + 1;
+        printf("%.f\n", number);
+        sum += number;
+    }
+
+    avg = sum / 10;
+
+    printf("Avg: %.2f\n", avg);
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+131. Написать программу, которая генерирует три последовательности из десяти случайных чисел (в диапазоне от 1 до 10). Для каждой последовательности программа должна рычислить среднее арифметическое. Далее приведен рекомендуемый вид экрана программы.
+```
