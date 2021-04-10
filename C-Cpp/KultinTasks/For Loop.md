@@ -295,3 +295,178 @@ int main()
 ```
 121. Написать программу, которая вычисляет сумму первых п целых положительных четных чисел. Количество суммируемых чисел должно вводиться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+int main()
+{
+    int start;
+    int n;
+    int sum;
+
+    printf("Calculating the sum of even positive numbers\n");
+    printf("Enter the number of numbers to add -> ");
+    scanf("%i", &n);
+
+    start = 2;
+    sum = 0;
+
+    for (int i = 0; i < n; ++i) {
+        sum += start;
+        start += 2;
+    }
+
+    printf("The sum of the first %i positive even numbers is %i\n", n, sum);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+122. Написать программу, которая вычисляет сумму первых « членов ряда: 1, 3, 5, 7 ... Количество суммируемых членов ряда задается во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int e;
+    int n;
+    int sum = 0;
+
+    printf("Calculation of the partial sum of the series: 1,3,6,9, ...\n");
+    printf("Enter the number of summed members of the series -> ");
+    scanf("%i", &n);
+
+    e = 1;
+
+    for (int i = 1; i <= n; ++i) {
+        sum += e;
+        e += 3;
+    }
+
+    printf("The sum of the first %i members of the series is %i\n", n, sum);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+123. Написать программу, которая вычисляет сумму первых я членов ряда: 1+1/2+1/3+1/4... Количество суммируемых членов
+ряда задается во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    float sum;
+    float elem;
+
+    printf("Calculation of the partial sumd of a series: 1 + 1/2 + 1/3 + ...\n");
+    printf("Enter the number of summed members of the series -> ");
+    scanf("%i", &n);
+
+    sum = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        elem = 1.0 / i;
+        sum += elem;
+    }
+
+    printf("He sum of the first %i members of the series is %.4f\n", n, sum);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+124. Написать программу, которая выводит таблицу степеней двойки: от нулевой до десятой. Далее приведен рекомендуемый вид экрана программы.
+```
+#include <stdio.h>
+
+int main()
+{
+    int x;
+
+    printf("Table Degrees Twos\n");
+    
+    x = 1;
+
+    for (int n = 0; n <= 10; ++n) {
+        printf("%3i%5i\n", n, x);
+        x *= 2;
+    }
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+125. Написать программу, которая вычисляет факториал введенного с клавиатуры числа. (Факториалом числа п называется произведение целых чисел от 1 до п. Например, факториал 1 равен 1, факториал 8 — 40 320).
+```
+#include <stdio.h>
+
+int main()
+{
+    int number;
+    int sum;
+
+    printf("Calculating factorial\n");
+    printf("Enter the number whose factorial you want to calculate -> ");
+    scanf("%i", &number);
+
+    sum = 1;
+
+    for (int i = 1; i <= number; ++i) {
+        sum *= i;
+    }
+
+    printf("Factorial %i is %i\n", number, sum);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+126. Написать программу, которая вводит с клавиатуры пять дробных чисел и вычисляет их среднее арифметическое. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным)
+```
+#include <stdio.h>
+
+int main()
+{
+    int n = 5;
+    float number;
+    float sum = 0;
+    float arithmetic_mean;
+
+    printf("The arithmetic mean of a sequence of fractional numbers\n");
+    printf("After entering each number\n");
+
+    for (int i = 0; i < n; ++i) {
+        printf("-> ");
+        scanf("%f", &number);
+        sum += number;
+    }
+
+    arithmetic_mean = sum / n;
+
+    printf("The arithmetic mean of the entered sequence: %.2f\n", arithmetic_mean);
+
+    printf("Press <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+127. Написать программу, которая вычисляет среднее арифметическое вводимой с клавиатуры последовательности дробных чисел. Количество чисел должно задаваться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
