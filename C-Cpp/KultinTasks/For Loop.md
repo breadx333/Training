@@ -907,3 +907,251 @@ int main()
 ```
 140. Написать программу, которая выводит на экран изображение шахматной доски. Черные клетки отображать «звездочкой», белые — пробелом. Далее приведен рекомендуемый вид экрана программы.
 ```
+#include <stdio.h>
+
+int main()
+{
+    for (int i = 1; i < 10; ++i) {
+        if (i % 2)
+            printf(" ");
+        printf("*****\n");
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+141. Написать программу, которая преобразует введенное пользователем десятичное число в двоичное. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    int dec;
+    int v;
+    int i;
+
+    printf("Decimal to Binary Conversion\n");
+    printf("Enter an integer from 0 to 255 and press <Enter> -> ");
+    scanf("%i", &dec);
+    printf("Decimal %i is binary ", dec);
+
+    v = 128;
+
+    for (i = 1; i <= 8; ++i) {
+        if (dec >= v) {
+            printf("1");
+            dec -= v;
+        }
+        else printf("0");
+        v = v / 2;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+142.  Написать программу проверки знания таблицы умножения. Программа должна вывести 10 примеров и выставить оценку: за 10 правильных ответов — «отлично», за 9 и 8 — «хорошо», за 7 и 6 — «удовлетворительно», за 6 и менее — «неудовлетворительно». Далее приведен рекомендуемый вид экрана программы (ответы пользователя выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int numb1, numb2;
+    int res;
+    int ans;
+    int cnt = 0;
+
+    printf("");
+    printf("");
+
+    srand(time(NULL));
+
+    for (int i = 1; i <= 10; ++i) {
+        numb1 = rand() % 7 + 2;
+        numb2 = rand() % 7 + 2;
+        res = numb1 * numb2;
+        printf("%ix%i=", numb1, numb2);
+        scanf("%i", &ans);
+        if (ans == res)
+            ++cnt;
+        else
+            printf("You are wrong. %ix%i=%i\nGo next\n", numb1, numb2, res);
+    }
+    printf("Correct ans: %i\n", cnt);
+    printf("Your mark: ");
+
+    switch (cnt) {
+    case 10:
+        puts("5"); break;
+    case 9:
+        puts("4"); break;
+    case 8:
+        puts("4"); break;
+    case 7:
+        puts("2"); break;
+    default:
+        puts("2"); break;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+143. Написать программу проверки умения складывать и вычитать числа в пределах 100. Программа должна вывести 10 примеров, причем в каждом примере на вычитание уменьшаемое должно быть больше или равно вычитаемому, т. е. не допускается предлагать испытуемому примеры с отрицательным результатом. Оценка выставляется по следующему правилу: за 10 правильных ответов — «отлично», за 9 и 8 — «хорошо», за 7 и 6 — «удовлетворительно», за 6 и менее — «плохо». Далее приведен рекомендуемый вид экрана программы (ответы пользователя выделены полужирным).
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define LEVEL 97+2
+
+int main()
+{
+    int numb1, numb2;
+    int op;
+
+    int zop;
+    int res;
+    int otv;
+    int cnt = 0;
+    int buf;
+
+    printf("");
+    printf("");
+
+    srand(time(NULL));
+
+    for (int i = 1; i <= 10; ++i) {
+        numb1 = rand() % LEVEL;
+        numb2 = rand() % LEVEL;
+        op = rand()%2;
+        if (op == 0) {
+            res = numb1 + numb2;
+            zop = '+';
+        }
+        else {
+            zop = '-';
+            if (numb1 < numb2) {
+                buf = numb2;
+                numb2 = numb1;
+                numb1 = buf;
+            }
+            res = numb1 - numb2;
+        }
+        printf("%i%c%i=", numb1, zop, numb2);
+        scanf("%i", &otv);
+        if (otv == res)
+            ++cnt;
+        else
+            printf("You are wrong. %i%c%i=%i\n", numb1, zop, numb2, res);
+    }
+
+    printf("Correct ans: %i\n", cnt);
+    printf("Your mark: ");
+
+    switch (cnt) {
+    case 10:
+        puts("5"); break;
+    case 9:
+        puts("4"); break;
+    case 8:
+        puts("4"); break;
+    case 7:
+        puts("2"); break;
+    default:
+        puts("2"); break;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+144. Написать программу, которая проверяет знание таблицы умножения. Программа должна вывести 10 примеров Оценка выставляется по следующему правилу: за 10 правильных ответов — «отлично», за 9 и 8 — «хорошо», за 7 и 6 — «удовлетворительно», за 6 и менее — «плохо». Программа должна вывести 10 примеров и после последнего ответа вывести оценку. Если в процессе тестирования количество ошибок достигнет 5 (т. е. получить положительную оценку испытуемый уже точно не сможет), то процесс тестирования должен быть прекращен.
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define LEVEL 97+2
+
+int main()
+{
+    int numb1, numb2;
+    int op;
+
+    int zop;
+    int res;
+    int otv;
+    int cnt = 0;
+    int buf;
+
+    printf("");
+    printf("");
+
+    srand(time(NULL));
+
+    for (int i = 1; i <= 10; ++i) {
+        numb1 = rand() % LEVEL;
+        numb2 = rand() % LEVEL;
+        op = rand()%2;
+        if (op == 0) {
+            res = numb1 * numb2;
+            zop = '*';
+        }
+        else {
+            zop = '/';
+            if (numb1 < numb2) {
+                buf = numb2;
+                numb2 = numb1;
+                numb1 = buf;
+            }
+            res = numb1 / numb2;
+        }
+        printf("%i%c%i=", numb1, zop, numb2);
+        scanf("%i", &otv);
+        if (otv == res)
+            ++cnt;
+        else
+            printf("You are wrong. %i%c%i=%i\n", numb1, zop, numb2, res);
+    }
+
+    printf("Correct ans: %i\n", cnt);
+    printf("Your mark: ");
+
+    switch (cnt) {
+    case 10:
+        puts("5"); break;
+    case 9:
+        puts("4"); break;
+    case 8:
+        puts("4"); break;
+    case 7:
+        puts("2"); break;
+    default:
+        puts("2"); break;
+    }
+
+    printf("\nPress <Enter> to close\n");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+145. Написать программу, которая выводит на экран таблицу значений функции у = -2,4х2+ 5х-3. Диапазон и шаг изменения аргумента должны задаваться во время работы программы. Далее приведен рекомендуемый вид экрана программы.
+```
