@@ -660,3 +660,219 @@ int main()
 ```
 173. Написать программу, которая вводит по строкам с клавиатуры двумерный массив и вычисляет сумму его элементов по столбцам.
 ```
+#include <stdio.h>
+
+#define ROW 3
+#define COL 5
+
+int main()
+{
+    int a[ROW][COL];
+    int s[COL];
+    int i, j;
+
+    for (i = 0; i < ROW; ++i) {
+        printf("-> ");
+        for (j = 0; j < COL; ++j)
+            scanf("%i", &a[i][j]);
+    }
+
+    for (i = 0; i < ROW; ++i) {
+        for (j = 0; j < COL; ++j)
+            printf("%i ", a[i][j]);
+        printf("\n");
+    }
+
+    for (i = 0; i < COL; ++i)
+        s[i] = 0;
+
+    for (j = 0; j < COL; ++j)
+        for (i = 0; i < ROW; ++i)
+            s[j] += a[i][j];
+
+    printf("----------------------\n");
+
+    for (i = 0; i < COL; ++i)
+        printf("%i ", s[i]);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+174. Написать программу, которая вводит по строкам с клавиатуры двумерный массив и вычисляет сумму его элементов по строкам.
+```
+#include <stdio.h>
+
+#define ROW 3
+#define COL 3
+
+int main()
+{
+    int a[ROW][COL];
+    int s[COL];
+    int i, j;
+
+    for (i = 0; i < ROW; ++i) {
+        printf("-> ");
+        for (j = 0; j < COL; ++j)
+            scanf("%i", &a[i][j]);
+    }
+
+    for (i = 0; i < ROW; ++i) {
+        for (j = 0; j < COL; ++j)
+            printf("%i ", a[i][j]);
+        printf("\n");
+    }
+
+    for (i = 0; i < COL; ++i)
+        s[i] = 0;
+
+    for (i = 0; i < COL; ++i)
+        for (j = 0; j < ROW; ++j)
+            s[i] += a[i][j];
+
+    printf("----------------------\n");
+
+    for (i = 0; i < COL; ++i)
+        printf("%i ", s[i]);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+175. Написать программу, которая обрабатывает результаты экзамена. Для каждой оценки программа должна вычислить процент от общего количества оценок. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+#define ROW 3
+#define COL 3
+
+int main()
+{
+    int n[6];
+    int s = 0;
+    float p[6];
+
+    char *mes[6] = {"\0", "\0", "2\0", "3\0", "4\0", "5\0"};
+
+    int i;
+
+    for (i = 5; i >= 2; --i) {
+        printf("%s -> ", mes[i]);
+        scanf("%i", &n[i]);
+        s += n[i];
+    }
+
+    for (i = 2; i < 6; ++i)
+        p[i] = (float)n[i]/s*100;
+
+    for (i = 5; i >= 2; --i)
+        printf("%-8s %2i  %2.0f\n", mes[i], n[i], p[i]);
+
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+176. Написать программу, которая вводит по строкам с клавиатуры двумерный массив дробного типа (3x5— три строки по пять элементов) и вычисляет среднее арифметическое элементов строк. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+#define ROW 3
+#define COL 3
+
+int main()
+{
+    int a[3][5];
+    int r;
+    int c;
+
+    int sum;
+    float m;
+
+    int k;
+
+    k = 1;
+    for (r = 0; r < 3; ++r) {
+        printf("S %i -> ", k);
+        for (c = 0; c < 5; ++c) {
+            scanf("%i", &a[r][c]);
+        }
+        ++k;
+    }
+
+    for (r = 0; r < 3; ++r) {
+        for (c = 0; c < 5; ++c)
+            printf("%5i ", a[r][c]);
+        printf("\n");
+    }
+
+    k = 1;
+    for (r = 0; r < 3; ++r) {
+        sum = 0;
+        for (c = 0; c < 5; ++c)
+            sum = sum + a[r][c];
+        m = (float)sum/5;
+        printf("S %i: %5.2f\n", k, m);
+        ++k;
+    }
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+177. Написать программу, которая определяет номер строки двумерного массива, сумма элементов которой максимальна.
+```
+#include <stdio.h>
+
+#define N 3
+
+int main()
+{
+    int m[N][N+1];
+
+    int mx;
+
+    int i, j;
+
+    for (i = 0; i < N; ++i) {
+        printf("E %i -> ", i+1);
+        for (j = 0; j < N; ++j)
+            scanf("%i", &m[i][j]);
+    }
+
+    for (i = 0; i < N; ++i) {
+        m[i][N] = 0;
+        for (j = 0; j < N; ++j)
+            m[i][N] += m[i][j];
+    }
+
+    mx = 0;
+    for (i = 1; i < N; ++i)
+        if (m[i][N] > m[mx][N])
+            mx = i;
+
+    printf("%i S sum", mx+1);
+    printf("max %i\n", m[mx][N]);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+178. Написать программу, которая проверяет, является ли введенная с клавиатуры квадратная матрица «магическим квадратом». Магическим квадратом называется матрица, у которой сумма чисел в каждом горизонтальном ряду, в каждом вертикальном и по каждой из диагоналей одна и та же (см. приведенный далее рисунок).
+```
