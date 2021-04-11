@@ -180,3 +180,118 @@ int main()
 ```
 162. Написать программу, которая вычисляет среднее арифметическое элементов массива без учета минимального и максимального элементов массива. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+
+#define SIZE 5
+
+int main()
+{
+    int a[SIZE] = {};
+    int mn;
+    int mx;
+    int n = 0;
+    int sum = 0;
+    int avg = 0;
+
+    for (int i = 0; i < SIZE; ++i) {
+        printf("a[%i] = ", i);
+        scanf("%i", &a[i]);
+    }
+
+    mn = a[0];
+    mx = a[0];
+
+    for (int i = 0; i < SIZE; ++i) {
+        if (a[i] > mx) mx = a[i];
+        if (a[i] < mn) mn = a[i];
+    }
+
+    for (int i = 0; i < SIZE; ++i) {
+        if (a[i] != mn && a[i] != mx) {
+            sum += a[i];
+            ++n;
+        }
+    }
+
+    printf("Min: %i\n", mn);
+    printf("Max: %i\n", mx);
+    printf("Avg. mean %i elements: %.2f\n", n, (float)sum/n);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+163. Написать программу, которая вычисляет среднюю (за неделю) температуру воздуха. Исходные данные должны вводиться во время работы программы. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+
+int main()
+{
+    char *day[] = {"1", "2", "3", "4", "5", "6", "7"};
+
+    float t[7];
+    float sum;
+    float avg;
+
+    for (int i = 0; i < 7; ++i) {
+        printf("%s day -> ", day[i]);
+        scanf("%f", &t[i]);
+        sum += t[i];
+    }
+
+    avg = sum / 7;
+
+    printf("Avg. temperature: %.2f\n", avg);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+164. Написать программу, которая проверяет, находится ли введенное с клавиатуры число в массиве. Массив должен вводиться в процессе работы программы.
+```
+#include <stdio.h>
+
+#define SIZE 5
+
+int main()
+{
+    int m[SIZE];
+    int exemplar;
+    int found;
+    int i;
+
+    printf("-> ");
+    for (i = 0; i < SIZE; ++i) {
+        scanf("%i", &m[i]);
+    }
+    printf("-> ");
+    scanf("%i", &exemplar);
+
+    found = 0;
+    i = 0;
+    do {
+        if (m[i] == exemplar)
+            found = 1;
+        else ++i;
+    } while (!found && i < SIZE);
+
+    if (found)
+        printf("%i\n", i+1);
+    else
+        printf("Not found\n");
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+165. Написать программу, которая проверяет, представляют ли элементы введенного с клавиатуры массива возрастающую последовательность.
+```
