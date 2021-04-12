@@ -563,3 +563,162 @@ int main()
 ```
 198. Написать программу, которая вычисляет значение выражения NoOiNjC^-.OkNk, где N;— целое одноразрядное число, Oj — один из двух знаков простейших арифметических действий: сложения (+) или вычитания (-). Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
 ```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char st[40];
+    char buf[10];
+    char op;
+    int rez;
+    int n;
+    int i, j;
+
+    printf("-> ");
+    scanf("%s", &st);
+
+    rez = 0;
+    op = ' ';
+    i = j = 0;
+    while (st[i]) {
+        j = 0;
+        while (st[i] >= '0' && st[i] <= '9')
+            buf[j++] = st[i++];
+        buf[j] = '\0';
+        n = atoi(buf);
+
+        switch (op) {
+            case '+': rez += n; break;
+            case '-': rez -= n; break;
+            case ' ': rez = n; break;
+        }
+        op = st[i++];
+    }
+
+    printf("Mean: %d\n", rez);
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+199. Написать программу, реализующую игру «Угадай число». Правила игры следующие. Играют двое. Первый игрок задумывает число, второй должен угадать число, задуманное первым. На каждом шаге угадывающий делает предположение, а задумавший число — говорит, сколько цифр числа угаданы и сколько из угаданных цифр занимают правильные позиции в числе. Например, если задумано число 725 и сделано предположение, что задуманное число 523, то угаданы две цифры (5 и 2), но только одна из них (2) занимает верную позицию.
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define N 3
+#define DEBUG
+
+int main()
+{
+    char player[N];
+    char pc[N] = {'6', '5', '8'};
+
+    int a[N];
+    int ugad;
+    int mesto;
+
+    int i, j;
+    time_t t;
+
+    srand((unsigned)time(&t));
+
+    for (i = 0; i < N; ++i)
+        pc[i] = rand() % 10 + 48;
+
+#ifdef DEBUG
+    printf("PC: ");
+    for (i = 0; i < N; ++i)
+        printf("%c", pc[i]);
+    printf("\n");
+#endif // DEBUG
+
+    do {
+        printf("Your value -> ");
+        scanf("%s", &player);
+
+        for (i = 0; i < N; ++i)
+            a[i] = 0;
+
+        ugad = 0;
+
+        for (i = 0; i < N; ++i) {
+            for (j = 0; j < N; ++j) {
+                if ((player[i] == pc[j]) && !a[j]) {
+                    ++ugad;
+                    a[j] = 1;
+                    break;
+                }
+            }
+            mesto = 0;
+            for (i = 0; i < N; ++i)
+                if (player[i] == pc[i]) ++mesto;
+            printf("Guess cnt: %i. In their places: %i\n", ugad, mesto);
+        }
+    } while ((mesto < N) || (ugad < N));
+
+    printf("U are guess number conceived pc\n");
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+200. Написать программу «Телеграф», которая принимает от пользователя сообщение и выводит его на экран в виде последовательности точек и тире. Вывод точек и тире можно сопроводить звуковым сигналом соответствующей длительности. Азбука Морзе для букв русского алфавита приведена в следующей таблице.
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define N 3
+#define DEBUG
+
+int main()
+{
+    char *morse[] = {".-  ", "-...", ".---", "--. ",
+                     "-.. ", ".   ", "...-", "--..",
+                     "..  ", ".---", "-.- ", ".-..",
+                     "--  ", "-.  ", "--- ", ".--.",
+                     ".-. ", "... ", "-   ", "..- ",
+                     "..-.", "....", "-.-.", "---.",
+                     "----", "--.-", "-..-", "-.--",
+                     "-..-", "..-.", "..--", ".-.-"};
+
+    char mes[80];
+    char sim[4];
+
+    char znak;
+    int i, j;
+
+    printf("-> ");
+    gets(mes);
+
+    for (i = 0; i < strlen(mes); ++i) {
+        if (mes[i] >= 'А' && mes[i] <= 'Я') {
+            strcpy(sim, morse[mes[i-128]);
+            j = 0;
+            do {
+                if (sim[j] == '-' || sim[j] == '.') {
+                    putchar(sim[j++]);
+                }
+            } while (sim[j] != ' ' && j < 4);
+        }
+        else if (mes[i] == ' ') {
+            printf(" ");
+        }
+    }
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
