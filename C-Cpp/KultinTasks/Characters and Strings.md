@@ -722,3 +722,45 @@ int main()
     return 0;
 }
 ```
+```
+#include <iostream>
+#include <string>
+
+using std::cin; using std::cout; using std::endl; using std::string;
+
+int main()
+{
+    const string morse[] = {".-", "-...", "-.-.", "-..", ".", "..-.",
+                            "--.", "....", "..", ".---", "-.-", ".-..",
+                            "--", "-.", "---", ".--.", "--.-", ".-.",
+                            "...", "-", "..-", "...-", ".--", "-..-",
+                            "-.--", "--..", "-----", ".----", "..---", "...--",
+                            "....-", ".....", "-....", "--...", "---..",
+                            "----."};
+
+    string user_input;
+    cout << "-> ";
+    getline(cin, user_input);
+    cout << endl;
+
+    for (decltype(user_input.size()) i = 0; i != user_input.size(); ++i) {
+        if (user_input[i] >= 'A' && user_input[i] <= 'Z')
+            cout << morse[user_input[i] - 65];
+        else if (user_input[i] >= 'a' && user_input[i] <= 'z')
+            cout << morse[user_input[i] - 97];
+        else if (user_input[i] >= '0' && user_input[i] <= '9')
+            cout << morse[user_input[i] - 22];
+        else if (user_input[i] == ' ')
+            cout << " ";
+        else continue;
+        cout << " ";
+    }
+    cout << endl;
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
