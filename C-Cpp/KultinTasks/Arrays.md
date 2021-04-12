@@ -876,3 +876,191 @@ int main()
 ```
 178. Написать программу, которая проверяет, является ли введенная с клавиатуры квадратная матрица «магическим квадратом». Магическим квадратом называется матрица, у которой сумма чисел в каждом горизонтальном ряду, в каждом вертикальном и по каждой из диагоналей одна и та же (см. приведенный далее рисунок).
 ```
+#include <stdio.h>
+
+#define SZ 5
+
+int main()
+{
+    int a[SZ][SZ];
+    int n;
+    int ok;
+    int i, j;
+    int sum;
+    int temp;
+
+    printf("(3..%i) -> ", SZ);
+    scanf("%i", &n);
+
+    for (i = 0; i < n; ++i) {
+        printf("-> ");
+        for (j = 0; j < n; ++j)
+            scanf("%i", &a[i][j]);
+    }
+
+    ok = 1;
+    sum = 0;
+
+    for (i = 0; i < n; ++i)
+        sum += a[i][i];
+
+    i = 0;
+    do {
+        temp = 0;
+        for (j = 0; j < n; ++j)
+            temp += a[i][j];
+        if (temp != sum) ok = 0;
+        ++i;
+    } while (ok && i < n);
+
+    if (ok) {
+        j = 0;
+        do {
+            temp = 0;
+            for (i = 0; i < n; ++i)
+                temp += a[i][j];
+            if (temp != sum) ok = 0;
+            ++j;
+        } while (ok && j < n);
+    }
+
+    if (ok) {
+        temp = 0;
+        i = n - 1;
+        for (j = 0; j < n; ++j)
+            temp += a[i--][j];
+        if (temp != sum) ok = 0;
+    }
+
+    if (!ok)
+        printf("Not ");
+    printf("magic square\n");
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+179. Написать программу, которая вычисляет доход по вкладу. Процентная ставка по вкладу определяется на основе данных, приведенных в таблице.
+```
+#include <stdio.h>
+
+int main()
+{
+    float rate[3][6] = {15.0, 16.5, 18.0, 19.5, 21.0, 22.0,
+                        16.5, 18.0, 19.5, 21.0, 22.5, 24.0,
+                        18.5, 19.5, 21.0, 22.5, 24.0, 27.0};
+
+    float value;
+    int period;
+    float profit;
+
+    int r, c;
+
+    for (int r = 0; r < 3; ++r) {
+        for (int c = 0; c < 6; ++c)
+            printf("%8.2f ", rate[r][c]);
+        printf("\n");
+    }
+
+    printf("Sum -> ");
+    scanf("%f", &value);
+
+    printf("Term -> ");
+    scanf("%i", &period);
+
+    if (value <= 50000)
+        r = 0;
+    else
+        if (value <= 250000)
+            r = 1;
+        else
+            r = 2;
+
+    switch (period) {
+        case 3: c = 0; break;
+        case 6: c = 1; break;
+        case 12: c = 2; break;
+        case 18: c = 3; break;
+        case 24: c = 4; break;
+        case 36: c = 5; break;
+        default: period = 0;
+    }
+
+    if (period != 0) {
+        printf("Interest rate: %5.2f\n", rate[r][c]);
+        profit = value * rate[r][c]/100/12 * period;
+        printf("Profit: %6.2f\n", profit);
+    }
+    else
+        printf("No correct term\n");
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+180. Написать программу, которая обрабатывает результаты спортивных соревнований: выстраивает команды в соответствии с количеством набранных очков, вычисляемым по формуле К= 1Ng + 6NS+ 5NB, где Na, Ns и NB— количество золотых, серебряных и бронзовых медалей. Далее приведен рекомендуемый вид экрана программы (данные, введенные пользователем, выделены полужирным).
+```
+#include <stdio.h>
+#include <string.h>
+
+#define NC 5
+
+int main()
+{
+    char *team[] = {"Hungary", "Germany", "Norway", "Russia", "Finland"};
+
+    int result[NC+1][6];
+
+    int i, j;
+    int mx;
+
+    for (i = 0; i < NC; ++i) {
+        printf("%s -> ", team[i]);
+        scanf("%i%i%i", &result[i][0],
+                        &result[i][1],
+                        &result[i][2]);
+        result[i][5] = i;
+    }
+
+    for (i = 0; i < NC; ++i) {
+        result[i][3] = result[i][0]+result[i][1]+result[i][2];
+        result[i][4] = result[i][0]*7+result[i][1]*6+result[i][2]*5;
+    }
+
+    for (i = 0; i < NC+1; ++i) {
+        mx = i;
+        for (j = i+1; j < NC; ++j) {
+            if (result[j][4] > result[mx][4])
+                mx = j;
+        }
+
+        for (j = 0; j < 6; ++j)
+            result[NC][j] = result[i][j];
+        for (j = 0; j < 6; ++j)
+            result[i][j] = result[mx][j];
+        for (j = 0; j < 6; ++j)
+            result[mx][j] = result[NC][j];
+    }
+
+    printf("%3s%12s%8s%8s%8s%8s%8s", " ", "Team", "Gold",
+                                     "Silver", "Bronze",
+                                     "Total", "Points");
+    for (i = 0; i < NC; ++i) {
+        printf("\n%12s", team[result[i][5]]);
+        for (j = 0; j < 5; ++j)
+            printf("%8i", result[i][j]);
+    }
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
