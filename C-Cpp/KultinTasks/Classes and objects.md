@@ -531,3 +531,210 @@ int main()
 ```
 230. Напишите программу, формирующую массив структур book (см. задачу 229). Информация о книгах должна вводиться с клавиатуры во время работы программы.
 ```
+#include <stdio.h>
+#include <string.h>
+#include <typeinfo.h>
+
+#define CNT 2
+
+struct Book {
+    Book() {}
+    Book(char *ID, char *NAME, char *AUTHOR, int YEAR, float PRICE) {
+        id = new char[strlen(ID)];
+        name = new char[strlen(NAME)];
+        author = new char[strlen(AUTHOR)];
+
+        strcpy(id, ID);
+        strcpy(name, NAME);
+        strcpy(author, AUTHOR);
+        year = YEAR;
+        price = PRICE;
+    }
+    char *id;
+    char *name;
+    char *author;
+    int year;
+    float price;
+};
+
+int main()
+{
+    Book *book[CNT];
+
+    char *id = new char[20];
+    char *name = new char[20];
+    char *author = new char[20];
+    int year;
+    float price;
+
+    for (int i = 0; i < CNT; ++i) {
+        printf("Book id -> ");
+        scanf("%s", id);
+        printf("Book name -> ");
+        scanf("%s", name);
+        printf("Book author -> ");
+        scanf("%s", author);
+        printf("Book year -> ");
+        scanf("%i", &year);
+        printf("Book price -> ");
+        scanf("%f", &price);
+
+        book[i] = new Book(id, name, author, year, price);
+    }
+
+    for (int i = 0; i < CNT; ++i) {
+        printf("ID: %s\n", book[i]->id);
+        printf("Name: %s\n", book[i]->name);
+        printf("Author: %s\n", book[i]->author);
+        printf("Year: %d\n", book[i]->year);
+        printf("Price: %.2f $\n", book[i]->price);
+    }
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+231. Объявите класс твоок для программы работы с информацией о книгах, например, в книжном магазине.
+```
+#include <stdio.h>
+#include <string.h>
+#include <typeinfo.h>
+
+#define CNT 2
+
+class Book {
+public:
+    Book() {}
+    Book(char *ID, char *NAME, char *AUTHOR, int YEAR, float PRICE);
+    ~Book();
+    print() {
+        printf("ID: %s\n", id);
+        printf("Name: %s\n", name);
+        printf("Author: %s\n", author);
+        printf("Year: %d\n", year);
+        printf("Price: %.2f $\n", price);
+    }
+private:
+    char *id;
+    char *name;
+    char *author;
+    int year;
+    float price;
+};
+
+Book::Book(char *ID, char *NAME, char *AUTHOR, int YEAR, float PRICE){
+    id = new char[strlen(ID)];
+    name = new char[strlen(NAME)];
+    author = new char[strlen(AUTHOR)];
+
+    strcpy(id, ID);
+    strcpy(name, NAME);
+    strcpy(author, AUTHOR);
+    year = YEAR;
+    price = PRICE;
+}
+
+Book::~Book() {
+    delete[] id;
+    delete[] name;
+    delete[] author;
+}
+
+int main()
+{
+    Book book("228", "Disorder", "EtoTenma", 1337, 10);
+
+    book.print();
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
+232. Напишите программу, формирующую массив объектов твоок (см. задачу 229). Информация о книгах должна вводиться с клавиатуры во время работы программы
+```
+#include <stdio.h>
+#include <string.h>
+#include <typeinfo.h>
+
+#define CNT 2
+
+class Book {
+public:
+    Book() {}
+    Book(char *ID, char *NAME, char *AUTHOR, int YEAR, float PRICE);
+    ~Book();
+    print() {
+        printf("ID: %s\n", id);
+        printf("Name: %s\n", name);
+        printf("Author: %s\n", author);
+        printf("Year: %d\n", year);
+        printf("Price: %.2f $\n", price);
+    }
+private:
+    char *id;
+    char *name;
+    char *author;
+    int year;
+    float price;
+};
+
+Book::Book(char *ID, char *NAME, char *AUTHOR, int YEAR, float PRICE){
+    id = new char[strlen(ID)];
+    name = new char[strlen(NAME)];
+    author = new char[strlen(AUTHOR)];
+
+    strcpy(id, ID);
+    strcpy(name, NAME);
+    strcpy(author, AUTHOR);
+    year = YEAR;
+    price = PRICE;
+}
+
+Book::~Book() {
+    delete[] id;
+    delete[] name;
+    delete[] author;
+}
+
+int main()
+{
+    Book *book[CNT];
+
+    char *id = new char[20];
+    char *name = new char[20];
+    char *author = new char[20];
+    int year;
+    float price;
+
+    for (int i = 0; i < CNT; ++i) {
+        printf("Book id -> ");
+        scanf("%s", id);
+        printf("Book name -> ");
+        scanf("%s", name);
+        printf("Book author -> ");
+        scanf("%s", author);
+        printf("Book year -> ");
+        scanf("%i", &year);
+        printf("Book price -> ");
+        scanf("%f", &price);
+
+        book[i] = new Book(id, name, author, year, price);
+    }
+
+    for (int i = 0; i < CNT; ++i) {
+        book[i]->print();
+    }
+
+    printf("\nPress <Enter> to close");
+    fflush(stdin);
+    getchar();
+
+    return 0;
+}
+```
