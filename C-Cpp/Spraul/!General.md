@@ -1,3 +1,4 @@
+2.2
 ```
 #include <iostream>
 
@@ -47,6 +48,7 @@ int main() {
     }
 }
 ```
+2.3
 ```
 #include <iostream>
 
@@ -104,5 +106,51 @@ int main() {
         cout << outputCharacter;
     } while (digitChar != 10);
     cout << "\n";
+}
+```
+```
+int main() {
+    char digitChar = cin.get();
+    int overallNumber = 0;
+    char decoder = 'U';
+
+    while (digitChar != 10) {
+        if (digitChar == ',' && (digitChar = cin.get()) == ' ') {
+                switch (decoder) {
+                case 'U':
+                    overallNumber = overallNumber % 27;
+                    if (overallNumber == 0) decoder = 'L';
+                    else cout << char(overallNumber + 'A' - 1) << ' ';
+                    break;
+                case 'L':
+                    overallNumber = overallNumber % 27;
+                    if (overallNumber == 0) decoder = 'P';
+                    else cout << char(overallNumber + 'a' - 1) << ' ';
+                    break;
+                case 'P':
+                    overallNumber = overallNumber % 9;
+                    if (overallNumber == 0) decoder = 'L';
+                    else {
+                        switch (overallNumber) {
+                            case 1: cout << '!'; break;
+                            case 2: cout << '?'; break;
+                            case 3: cout << ','; break;
+                            case 4: cout << '.'; break;
+                            case 5: cout << ' '; break;
+                            case 6: cout << ';'; break;
+                            case 7: cout << '"'; break;
+                            case 8: cout << '\\'; break;
+                        }
+                    break;
+                }
+            }
+            overallNumber = 0;
+        }
+        else {
+            overallNumber = overallNumber * 10 + (digitChar - '0');
+        }
+        digitChar = cin.get();
+    }
+    cout << overallNumber << endl;
 }
 ```
