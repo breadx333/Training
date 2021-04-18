@@ -160,3 +160,62 @@ int main() {
 ```
 2.6
 ```
+#include <iostream>
+
+using std::cin; using std::cout; using std::endl;
+
+long long decToBin(int num) {
+    long long bin = 0;
+    int rem, i = 1, step = 1;
+    while (num != 0) {
+        rem = num % 2;
+        num /= 2;
+        bin += rem * i;
+        i *= 10;
+        ++step;
+    }
+    return bin;
+}
+
+long long binToDec(long long n) {
+    int num = n;
+    long long dec = 0;
+    int base = 1;
+    int temp = num;
+    while (temp) {
+        int last_digit = temp % 10;
+        temp = temp / 10;
+        dec += last_digit * base;
+        base *= 2;
+    }
+    return dec;
+}
+
+int main()
+{
+    enum modeConvert {NO_CHANGE, DECIMAL_TO_BINARY, BINARY_TO_DECIMAL};
+    long long decimal;
+    short mode = 0;
+
+    cout << "Enter decimal number: ";
+    cin >> decimal;
+    cout << "Enter convert mode (0,1,2): ";
+    cin >> mode;
+
+    switch (mode) {
+        case NO_CHANGE:
+            cout << decimal << endl;
+            break;
+        case DECIMAL_TO_BINARY:
+            cout << decToBin(decimal) << endl;;
+            break;
+        case BINARY_TO_DECIMAL:
+            cout << binToDec(decimal) << endl;
+            break;
+        default:
+            break;
+    }
+
+	return 0;
+}
+```
