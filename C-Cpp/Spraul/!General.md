@@ -154,3 +154,76 @@ int main() {
     cout << overallNumber << endl;
 }
 ```
+3
+```
+#include <iostream>
+
+using std::cin; using std::cout; using std::endl;
+
+int compareFunc(const void *voidA, const void *voidB) {
+    int *intA = (int *)(voidA);
+    int *intB = (int *)(voidB);
+    return *intA - *intB;
+}
+
+int main()
+{
+    const int ARRAY_SIZE = 10;
+    int intArray[ARRAY_SIZE] = {};
+    int sortedArray[ARRAY_SIZE] = {};
+
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        int val = 0;
+        do {
+            cout << "Enter " << i+1 << ": ";
+            cin >> val;
+        } while (val <= 0 || val > 10);
+        intArray[i] = val;
+        sortedArray[i] = val;
+    }
+
+    //qsort(sortedArray, ARRAY_SIZE, sizeof(int), compareFunc);
+
+    int most;
+    int mostcnt = 0;
+    int cnt = 0;
+
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        cnt++;
+        if (i == ARRAY_SIZE-1 || sortedArray[i] != sortedArray[i+1]) {
+            if (cnt > mostcnt) {
+                most = sortedArray[i];
+                mostcnt = cnt;
+            }
+            cnt = 0;
+        }
+    }
+
+    cout << most << endl;
+    cout << mostcnt << endl;
+
+    for (const auto &e : sortedArray)
+        cout << e << ' ';
+    cout << endl;
+
+    const int MAX_RESPONSE = 10;
+    int histogram[MAX_RESPONSE];
+    for (int i = 0; i < MAX_RESPONSE; ++i)
+        histogram[i] = 0;
+    for (int i = 0; i < ARRAY_SIZE; ++i)
+        histogram[sortedArray[i] - 1]++;
+
+    for (const auto &e : histogram)
+        cout << e << ' ';
+    cout << endl;
+
+    int mostF = 0;
+    for (int i = 1; i < MAX_RESPONSE; ++i)
+        if (histogram[i] > histogram[mostF]) mostF = i;
+    ++mostF;
+
+    cout << mostF << " " << histogram[mostF-1] << endl;
+
+	return 0;
+}
+```
