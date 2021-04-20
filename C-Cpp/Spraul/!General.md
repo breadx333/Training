@@ -227,3 +227,68 @@ int main()
 	return 0;
 }
 ```
+4
+```
+#include <iostream>
+#include <string>
+
+using std::cin; using std::cout; using std::endl; using std::string;
+
+typedef char *arrayString;
+
+int length(arrayString s) {
+    int cnt = 0;
+    while (s[cnt] != 0) ++cnt;
+    return cnt;
+}
+
+void concatenate(arrayString &s1, arrayString &s2) {
+    int s1_OldLength = length(s1);
+    int s2_Length = length(s2);
+    int s1_NewLength = s1_OldLength + s2_Length;
+    arrayString newS = new char[s1_NewLength + 1];
+    for (int i = 0; i < s1_OldLength; ++i) newS[i] = s1[i];
+    for (int i = 0; i < s2_Length; ++i) newS[s1_OldLength + i] = s2[i];
+    newS[s1_NewLength] = 0;
+    delete[] s1;
+    s1 = newS;
+}
+
+void append(arrayString &s, char c) {
+    int oldLength = length(s);
+    arrayString newS = new char[oldLength + 2];
+    for (int i = 0; i < oldLength; ++i) newS[i] = s[i];
+    newS[oldLength] = c;
+    newS[oldLength + 1] = 0;
+    delete[] s;
+    s = newS;
+}
+
+void appendTester() {
+    arrayString a = new char[5];
+    a[0] = 't'; a[1] = 'e'; a[2] = 's'; a[3] = 't'; a[4] = 0;
+    append(a, '!');
+    cout << a << "\n";
+}
+
+void concatenateTester() {
+    arrayString a = new char[5];
+    a[0] = 't'; a[1] = 'e'; a[2] = 's'; a[3] = 't'; a[4] = 0;
+    arrayString b = new char[1];
+    b[0] = 0;
+    concatenate(b, a);
+    cout << a << ' ' << b << endl;
+    cout << (void *)a << ' ' << (void *)b << endl;
+}
+
+char characterAt(arrayString s, int postintion) {
+    return s[postintion];
+}
+
+int main()
+{
+    appendTester();
+    concatenateTester();
+    return 0;
+}
+```
