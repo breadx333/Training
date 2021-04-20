@@ -315,6 +315,20 @@ void addRecord(studentCollection &sc, int stuNum, int gr) {
     sc = newNode;
 }
 
+double averageRecord(studentCollection sc) {
+    if (sc == NULL) return 0;
+    int cnt = 0;
+    double sum = 0;
+    listNode *loopPtr = sc;
+    while (loopPtr != NULL) {
+        sum += loopPtr->grade;
+        ++cnt;
+        loopPtr = loopPtr->next;
+    }
+    double avg = sum / cnt;
+    return avg;
+}
+
 int main()
 {
     studentCollection sc;
@@ -326,7 +340,7 @@ int main()
     node2->studentNum = 1012; node2->grade = 93;
 
     listNode *node3 = new listNode;
-    node3->studentNum = 1076; node2->grade = 85;
+    node3->studentNum = 1076; node3->grade = 85;
 
     sc = node1;
 
@@ -337,6 +351,15 @@ int main()
     node1 = node2 = node3 = NULL;
 
     addRecord(sc, 1274, 91);
+
+    listNode *ptr = sc;
+
+    while (ptr != NULL) {
+        cout << ptr->studentNum << ' ' << ptr->grade << endl;
+        ptr = ptr->next;
+    }
+
+    cout << averageRecord(sc) << endl;
 
 	return 0;
 }
