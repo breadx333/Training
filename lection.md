@@ -68,3 +68,25 @@ Result:
 [0, 1, 1, 2, 3, 3, 4, 4]
 [0, 1, 1, 2, 3, 3, 4, 4]
 ```
+Наибольшая возрастающая последовательность
+
+Не совсем уверен в правильности
+
+```
+def printList(lst):
+    for i in lst:
+        print(i)
+
+A = [[5, 6], [1, 3], [8, 9], [10, 11]]
+
+F = [0]*len(A)
+
+for i in range(len(A)):
+    for j in range(i):
+        if A[j]<A[i] and F[j]>F[i]:
+            F[i] = F[j]
+    F[i] += 1
+
+print(F)
+print(max(F))
+```
