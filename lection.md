@@ -90,3 +90,8 @@ for i in range(len(A)):
 print(F)
 print(max(F))
 ```
+Result:
+```
+[1, 1, 2, 3]
+3
+```
